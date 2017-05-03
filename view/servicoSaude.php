@@ -36,8 +36,7 @@ class Index extends Pagina{
                      $tipoHospDao = new TipoHospitalDao();
                      $tipoHospital = $tipoHospDao->getAllTipoHospital();
                      
-                     foreach ($tipoHospital as $tipo){   
-                        var_dump($servico);
+                     foreach ($tipoHospital as $tipo){
                         if($servico['idTipoHospital'] == $tipo['idTipoHospital']){
                            echo "<option value='{$tipo['idTipoHospital']}' selected>";
                         }else{
