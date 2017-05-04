@@ -22,6 +22,15 @@ class recemNascido extends Pagina{
             $("#danoPerinatalNao").on('change', function(){
                $("#tipoDanoPerinatal").attr("disabled", true);
             });
+            
+            $("#malformacaoSim").on('change', function(){
+               $("#tipoMalformacao").attr("disabled", false);
+               $("#descMalformacao").attr("disabled", false);
+            });
+            $("#malformacaoNao").on('change', function(){
+               $("#tipoMalformacao").attr("disabled", true);
+               $("#descMalformacao").attr("disabled", true);
+            });
          });
       </script>
       <?php
@@ -40,7 +49,7 @@ class recemNascido extends Pagina{
 <div class="container">
    <h2>2 - Dados do recém-nascido</h2>
    <h3>2.1 - Informações gerais</h3>
-   <form method="post" action="/controll/recemNascido/inserirRecemNascido.php">
+   <form method="post" action="/controll/2.1-recemNascido/inserirRecemNascido.php">
       <div class="row">
          <input type="text" style="display: none;" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-xs-6 form-group">
@@ -200,51 +209,158 @@ class recemNascido extends Pagina{
          
          <div class="form-group col-xs-6">
             <label>Outro dano</label><br><br>
-            <input name="outroDano" class="form-control" type="text" placeholder="Se outro especifique aqui">     
+            <input name="outroDano" class="form-control" type="text" 
+                   value="<?php if(isset($recemNascido['outroDano']))echo $recemNascido['outroDano'];?>" placeholder="Se outro especifique aqui">     
          </div>
       </div>  
       
       <div class="row">         
-         <div class="col-xs-6">
+         <div class="col-xs-6 form-group">
             <label>Idade Gestacional (Semanas / Dias)</label>
             <div class="row">
                <div class="col-xs-6">
-                  <input name="idadeGestacionalSem" class="form-control" placeholder="Semanas" value="<?php if(isset($recemNascido['idadeGestacionalSem'])){echo $recemNascido['idadeGestacionalSem'];} ?>">
+                  <input name="idadeGestacionalSem" class="form-control" placeholder="Semanas" 
+                         value="<?php if(isset($recemNascido['idadeGestacionalSem'])){echo $recemNascido['idadeGestacionalSem'];} ?>">
                </div>
                <div class="col-xs-6">
-                  <input name="idadeGestacionalDia" class="form-control" placeholder="Dias" value="<?php if(isset($recemNascido['idadeGestacionalDia'])){echo $recemNascido['idadeGestacionalDia'];}?>">                  
+                  <input name="idadeGestacionalDia" class="form-control" placeholder="Dias" 
+                         value="<?php if(isset($recemNascido['idadeGestacionalDia'])){echo $recemNascido['idadeGestacionalDia'];}?>">                  
                </div>
             </div>                        
          </div>
-         <div class="col-xs-6">
+         <div class="col-xs-6 form-group">
             <label>Classificação idade gestacional</label>
             <select name="classIdadeGest" class="form-control">
-               <option>Pré-termo</option>
-               <option>Termo</option>
-               <option>Pós-termo</option>
+               <?php
+               if(isset($recemNascido['classIdadeGest'])){
+                  if($recemNascido['classIdadeGest']==="Pré-termo"){
+                     echo "<option selected>Pré-termo</option>";
+                  }else{
+                     echo "<option>Pré-termo</option>";
+                  }
+                  
+                  if($recemNascido['classIdadeGest']==="Termo"){
+                     echo "<option selected>Termo</option>";
+                  }else{
+                     echo "<option>Termo</option>";
+                  }
+                  
+                  if($recemNascido['classIdadeGest']==="Pós-termo"){
+                     echo "<option selected>Pós-termo</option>";
+                  }else{
+                     echo "<option>Pós-termo</option>";
+                  }
+               }else{
+                  echo "<option>Pré-termo</option>";
+                  echo "<option>Termo</option>";
+                  echo "<option>Pós-termo</option>";
+               }
+               
+               ?>
             </select>
          </div>
          
       </div>
          
-      <h3>2.2 - Exame físico ao nascer</h3>
-      <div class="row">
-         <div class="col-xs-12 form-group">
-            <label>Presença de malformações</label>
-            <input type="radio" name="malformacao" value="Não">Não
-            <input type="radio" name="malformacao" value="Sim">Sim
-            <select disabled class="form-control" id="tipoMalformacao" name="tipoDanoPerinatal">
-               <option>Anóxico</option>
-               <option>Hemorrágico</option>
-               <option>Isquêmico</option>
-               <option>Traumático</option>
-               <option>Outros</option>
-            </select>
-         </div>
-      </div>
-            
-      <input type="submit" class="btn btn-success">
+      <button class="btn btn-success" type="submit">Salvar sessão 2-1</button>
    </form>   
+   
+   <h3>2.2 - Exame físico ao nascer</h3>
+   <form action="/controll/2.2-exameFisicoAoNascer/inserirExameFisico.php" method="post">
+      <input type="text" style="display: none;" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
+
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Peso (g)</label>
+            <input name='peso' type="number" class="form-control">
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Estatura (cm)</label>
+            <input name='estatura' type="number" class="form-control">
+         </div>
+      </div>   
+
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Perímetro torácico (cm)</label>
+            <input name='perimToracico' type="number" class="form-control">
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Perímetro cefálico (cm)</label>
+            <input name='perimCefalico' type="number" class="form-control">
+         </div>
+      </div> 
+
+      <div class="row">
+         <div class="col-xs-4 form-group">
+            <label>Índice de Apgar 1º min</label>
+            <input name='apgar1' type="number" class="form-control">
+         </div>
+         <div class="col-xs-4 form-group">
+            <label>Índice de Apgar 5º min</label>
+            <input name='apgar5' type="number" class="form-control">
+         </div>
+         <div class="col-xs-4 form-group">
+            <label>Índice de Apgar 10º min</label>
+            <input name='apgar10' type="number" class="form-control">
+         </div>
+      </div> 
+      
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Presença de malformações?</label>
+            <input required id="malformacaoNao" name='malformacao' type="radio" value="0">Não
+            <input required id="malformacaoSim" name='malformacao' type="radio" value="0">Sim
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Tipo de malformações</label>
+            <select id="tipoMalformacao" class="form-control" name="tipoMalformacao">
+               <option>Aparelho circulatório</option>
+               <option>Aparelho respiratório</option>
+               <option>Aparelho digestivo</option>
+               <option>Aparelho genitais</option>
+               <option>Aparelho osteomuscular</option>
+            </select>
+         </div>         
+      </div> 
+      
+      <div class="row">
+         <div class="col-xs-12 form-group"> 
+            <input id="descMalformacao" name="descMalformacao" type="text" class="form-control" placeholder="Descreva a malformação encontrada">
+         </div>         
+      </div>
+      
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Houve outros achados clínicos?</label>
+            <label><input required type="radio" name="achadosClinicos" value="0">Não</label>
+            <label><input required type="radio" name="achadosClinicos" value="1">Sim</label>
+            
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Outros achados clínicos</label>
+            <select class="form-control" name="outrosAchadosClinicos">
+               <option></option>
+               <option>Icterícia</option>
+               <option>Anemia</option>
+               <option>Esplenomegalia</option>
+               <option>Alterações ósseas</option>
+               <option>Choro ao manuseio</option>
+               <option>Hidropsia</option>
+               <option>Rinite muco-sanguinolenta</option>
+               <option>Hepatomegalia</option>
+               <option>Lesões cutâneas</option>
+               <option>Pseudoparalisia</option>
+               <option>Petéquias</option>
+               <option>Plaquetopenia</option>
+               <option>Convulsões</option>
+               <option>Outras</option>
+            </select>
+         </div>
+      </div>
+      <button class="btn btn-success" type="submit">Salvar sessão 2-2</button>
+   </form>   
+   
    
 </div>
       <?php

@@ -14,13 +14,14 @@ function inserirRecemNascido(){
    $array['tipoParto'] = $_POST['tipoParto'];
    $array['danoPerinatal'] = $_POST['danoPerinatal'];
    $array['tipoDanoPerinatal'] = $_POST['tipoDanoPerinatal'];
+   $array['outroDano'] = $_POST['outroDano'];
    
    $recemDao = new RecemNascidoDao();
    if(isRecemNascidoExiste($_POST['prontuario'])){
       $result = $recemDao->updateRecemNascido($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/recemNascido.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.1-recemNascido.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $recemDao->inserirRecemNascido($array);

@@ -5,13 +5,13 @@ function inserirProntuario(){
    $numProntuario = $_GET['prontuario'];
    
    if(isProntuarioExiste()){
-      header("Location: /view/servicoSaude.php?prontuario=$numProntuario");
+      header("Location: /view/1.0-servicoSaude.php?prontuario=$numProntuario");
    }
    
    $proDao = new ProntuarioDao();
    $result = $proDao->inserirProntuario($numProntuario);
    if($result===TRUE){
-      header("Location: /view/servicoSaude.php?prontuario=$numProntuario");
+      header("Location: /view/1.0-servicoSaude.php?prontuario=$numProntuario");
    }elseif ($result===1062) {
       echo 'Registro duplicado';
    }else{

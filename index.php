@@ -17,7 +17,7 @@ class Index extends Pagina{
                </h1>
             </div>
          </div>
-         <form action="/controll/prontuario/criarProntuario.php">
+         <form action="/controll/0.0-prontuario/criarProntuario.php">
             <div class="row">
                <div class="form-group col-xs-12">
                   <label>Prontuário</label>

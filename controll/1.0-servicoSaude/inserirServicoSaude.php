@@ -13,12 +13,12 @@ function inserirServicoSaude(){
    if(isServicoExiste($_POST['prontuario'])){
       $result = $servDao->updateServicoSaude($array);
       if($result === TRUE){
-         header("Location: /view/recemNascido.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.1-recemNascido.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $servDao->inserirServicoSaude($array);
       if($result === TRUE){
-         header("Location: /view/recemNascido.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.1-recemNascido.php?prontuario={$array['idProntuario']}");
       }
    }
    

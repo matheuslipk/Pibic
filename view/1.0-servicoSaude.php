@@ -23,7 +23,7 @@ class Index extends Pagina{
                </h1>
             </div>
          </div>
-         <form method="post" action="/controll/servicoSaude/inserirServicoSaude.php">
+         <form method="post" action="/controll/1.0-servicoSaude/inserirServicoSaude.php">
             <div class="row">
                <h2>1 - Dados do serviço de saúde</h2>
             </div>

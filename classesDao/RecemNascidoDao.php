@@ -10,17 +10,26 @@ class RecemNascidoDao {
       $idadeGestDia = $array['idadeGestacionalDia'];
       $classIdadeGest = $array['classIdadeGest'];
       $gemelar = $array['gemelar'];
-      $tipoGemelar = $array['tipoGemelar'];
+      if(isset($array['tipoGemelar'])){
+         $tipoGemelar = $array['tipoGemelar'];
+      }else{
+         $tipoGemelar = NULL;
+      }
       $tipoParto = $array['tipoParto'];
       $danoPerinatal = $array['danoPerinatal'];
-      $tipoDanoPerinatal = $array['tipoDanoPerinatal'];
+      if(isset($array['tipoDanoPerinatal'])){
+         $tipoDanoPerinatal = $array['tipoDanoPerinatal'];
+      }else{
+         $tipoDanoPerinatal = NULL;
+      }
+      $outroDano = $array['outroDano'];
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO recemNascido VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO recemNascido VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("issiisissis", $idProntuario, $dataParto, $sexo, 
               $idadeGestSem, $idadeGestDia, $classIdadeGest, $gemelar, 
-              $tipoGemelar, $tipoParto, $danoPerinatal, $tipoDanoPerinatal);
+              $tipoGemelar, $tipoParto, $danoPerinatal, $tipoDanoPerinatal, $outroDano);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
@@ -69,15 +78,16 @@ class RecemNascidoDao {
       }else{
          $tipoDanoPerinatal = NULL;
       }
+      $outroDano = $array['outroDano'];
       
       $con = ConexaoDao::getConecao();
       $query = "UPDATE recemNascido SET dataParto=?, sexo=?, idadeGestacionalSem=?, "
               . "idadeGestacionalDia=?, classIdadeGest=?, gemelar=?, tipoGemelar=?, "
-              . "tipoParto=?, danoPerinatal=?, tipoDanoPerinatal=? WHERE idProntuario=?";
+              . "tipoParto=?, danoPerinatal=?, tipoDanoPerinatal=?, outroDano=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("ssiisissisi", $dataParto, $sexo, 
+      $stmt->bind_param("ssiisississi", $dataParto, $sexo, 
               $idadeGestSem, $idadeGestDia, $classIdadeGest, $gemelar, 
-              $tipoGemelar, $tipoParto, $danoPerinatal, $tipoDanoPerinatal, $idProntuario);
+              $tipoGemelar, $tipoParto, $danoPerinatal, $tipoDanoPerinatal, $outroDano, $idProntuario);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
