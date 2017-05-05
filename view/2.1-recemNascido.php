@@ -310,7 +310,7 @@ class recemNascido extends Pagina{
          <div class="col-xs-6 form-group">
             <label>Presença de malformações?</label>
             <input required id="malformacaoNao" name='malformacao' type="radio" value="0">Não
-            <input required id="malformacaoSim" name='malformacao' type="radio" value="0">Sim
+            <input required id="malformacaoSim" name='malformacao' type="radio" value="1">Sim
          </div>
          <div class="col-xs-6 form-group">
             <label>Tipo de malformações</label>

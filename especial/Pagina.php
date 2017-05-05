@@ -117,8 +117,8 @@ class Pagina {
 
    public function exibirPaginacaoQuest(int $num){
       echo "<div class='row'>";
-      echo "<div class='col-xs-3'></div>";
-      echo "<div class='col-xs-6'>";
+      echo "<div class='col-xs-2'></div>";
+      echo "<div class='col-xs-8'>";
       echo "<ul class='pagination  center-block'>";
       
       if($num === 1){
