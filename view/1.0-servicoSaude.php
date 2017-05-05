@@ -80,7 +80,7 @@ class Index extends Pagina{
             </div>
          </form>
          <?php
-         parent::exibirPaginacaoQuest(1);
+         parent::exibirPaginacaoQuest(1, $_GET['prontuario']);
          ?>
                   
       </div>

@@ -37,14 +37,14 @@ function inserirExameFisico(){
    if(isExameFisicoExiste($_POST['prontuario'])){
       $result = $exameFisicoDao->updateExameFisico($array);
       echo $result;
-//      if($result === TRUE){
-//         header("Location: /view/2.1-recemNascido.php?prontuario={$array['idProntuario']}");
-//      }
+      if($result === TRUE){
+         header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
+      }
    }else{
       $result = $exameFisicoDao->inserirRecemNascido($array);
       echo $result;
       if($result === TRUE){
-//         header("Location: /view/recemNascido.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
       }
    }
    

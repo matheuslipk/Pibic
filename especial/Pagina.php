@@ -115,36 +115,36 @@ class Pagina {
       echo "<title>{$this->tituloPagina}</title>\n";
    }
 
-   public function exibirPaginacaoQuest(int $num){
+   public function exibirPaginacaoQuest(int $pag, int $prontuario){
       echo "<div class='row'>";
       echo "<div class='col-xs-2'></div>";
       echo "<div class='col-xs-8'>";
       echo "<ul class='pagination  center-block'>";
       
-      if($num === 1){
-         echo "<li class='active'><a href='/view/servicoSaude.php'>1</a></li>";
+      if($pag === 1){
+         echo "<li class='active'><a href='/view/1.0-servicoSaude.php?prontuario={$prontuario}'>1</a></li>";
       }else{
-         echo "<li><a href='/view/servicoSaude.php'>1</a></li>";
+         echo "<li><a href='/view/1.0-servicoSaude.php?prontuario={$prontuario}'>1</a></li>";
       }
-      if($num ===2){
-         echo "<li class='active'><a href='/view/recemNascido.php'>2</a></li>";
+      if($pag ===2){
+         echo "<li class='active'><a href='/view/2.1-recemNascido.php?prontuario={$prontuario}'>2</a></li>";
       }else{
-         echo "<li><a href='/view/recemNascido.php'>2</a></li>";
+         echo "<li><a href='/view/2.1-recemNascido.php?prontuario={$prontuario}'>2</a></li>";
       }
-      if($num ===3){
-         echo "<li class='active'><a href='/view/entrevistaMae.php'>3</a></li>";
+      if($pag ===3){
+         echo "<li class='active'><a href='/view/2.3-examesInespecificos.php?prontuario={$prontuario}'>3</a></li>";
       }else{
-         echo "<li><a href='/view/entrevistaMae.php'>3</a></li>";
+         echo "<li><a href='/view/2.3-examesInespecificos.php?prontuario={$prontuario}'>3</a></li>";
       }
-      if($num ===4){
+      if($pag ===4){
          echo "<li class='active'><a href='#'>4</a></li>";
       }else{
          echo "<li><a href='#'>4</a></li>";
       }
-      if($num ===5){
-         echo "<li class='active'><a href='#'>5</a></li>";
+      if($pag ===5){
+         echo "<li class='active'><a href='/view/2.5-examesImagem.php?prontuario={$prontuario}''>5</a></li>";
       }else{
-         echo "<li><a href='#'>5</a></li>";
+         echo "<li><a href='/view/2.5-examesImagem.php?prontuario={$prontuario}''>5</a></li>";
       }
       
       echo "</ul>";

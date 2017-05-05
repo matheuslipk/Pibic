@@ -364,7 +364,7 @@ class recemNascido extends Pagina{
    
 </div>
       <?php
-      parent::exibirPaginacaoQuest(2);
+      parent::exibirPaginacaoQuest(2, $_GET['prontuario']);
    }
 }
 $e = new recemNascido();
