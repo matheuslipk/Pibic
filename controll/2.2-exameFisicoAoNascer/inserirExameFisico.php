@@ -41,7 +41,7 @@ function inserirExameFisico(){
          header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
       }
    }else{
-      $result = $exameFisicoDao->inserirRecemNascido($array);
+      $result = $exameFisicoDao->inserirExameFisico($array);
       echo $result;
       if($result === TRUE){
          header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");

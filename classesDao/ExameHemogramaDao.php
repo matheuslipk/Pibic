@@ -2,16 +2,15 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 
 class ExameFisicoDao {
-   public function inserirExameFisico($array){
+   public function inserirExameHemograma($array){
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameFisico VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO exameHemograma VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiiiiiiiissis", $array['idProntuario'], $array['peso'], 
-              $array['estatura'], $array['perimToracico'], $array['perimCefalico'], 
-              $array['apgar1'], $array['apgar5'], $array['apgar10'], 
-              $array['malformacao'], $array['tipoMalformacao'], $array['descMalformacao'], 
-              $array['achadosClinicos'], $array['outrosAchadosClinicos']);
+      $stmt->bind_param("iisiiiiiiiii", $array['idProntuario'], $array['hemograma'], 
+              $array['dataHemograma'], $array['hb'], $array['ht'], $array['leococitos'], 
+              $array['bastonetes'], $array['segmentados'], $array['monocitos'], 
+              $array['linfocitos'], $array['plaquetas'], $array['glicose']);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
@@ -23,9 +22,9 @@ class ExameFisicoDao {
       return $erro;
    }
    
-   public function getExameFisicoByProntuario($prontuario){
+   public function getExameExameHemograma($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM exameFisico WHERE idProntuario=?";
+      $query = "SELECT * FROM exameHemograma WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -40,14 +39,14 @@ class ExameFisicoDao {
       return FALSE;
    }
    
-   public function updateExameFisico($array){      
+   public function updateExameHemograma($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE exameFisico SET peso=?, estatura=?, perimToracico=?, "
-              . "perimCefalico=?, apgar1=?, apgar5=?, apgar10=?, malformacao=?, "
-              . "tipoMalformacao=?, descMalformacao=?, achadosClinicos=?, "
-              . "outrosAchadosClinicos=? WHERE idProntuario=?";
+      $query = "UPDATE exameHemograma SET hemograma=?, dataHemograma=?, hb=?, "
+              . "ht=?, leococitos=?, bastonetes=?, segmentados=?, "
+              . "monocitos=?, linfocitos=?, plaquetas=?, "
+              . "glicose=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiiiiiiissisi", $array['peso'], 
+      $stmt->bind_param("isiiiiiiiiii", $array['peso'], 
               $array['estatura'], $array['perimToracico'], $array['perimCefalico'], 
               $array['apgar1'], $array['apgar5'], $array['apgar10'], 
               $array['malformacao'], $array['tipoMalformacao'], $array['descMalformacao'], 
