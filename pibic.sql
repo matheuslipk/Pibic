@@ -57,11 +57,13 @@ CREATE TABLE `examePuncaoLiquosa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `prontuario` (
-  `idProntuario` int(11) NOT NULL
+  `idProntuario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
+  `dataCriacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `prontuario` VALUES
-(1);
+(1, 100, '2017-05-06 14:42:17');
 
 CREATE TABLE `recemNascido` (
   `idProntuario` int(11) NOT NULL,
@@ -104,6 +106,16 @@ INSERT INTO `tipoHospital` VALUES
 (4, 'Domicílio'),
 (5, 'Outro');
 
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `nick` varchar(20) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `senha` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `usuario` VALUES
+(100, 'matheuslipk', 'Matheus Araújo de Alcantara', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+
 
 ALTER TABLE `exameFisico`
   ADD PRIMARY KEY (`idProntuario`);
@@ -115,7 +127,8 @@ ALTER TABLE `examePuncaoLiquosa`
   ADD PRIMARY KEY (`idProntuario`);
 
 ALTER TABLE `prontuario`
-  ADD PRIMARY KEY (`idProntuario`);
+  ADD PRIMARY KEY (`idProntuario`),
+  ADD KEY `usuario` (`usuario`);
 
 ALTER TABLE `recemNascido`
   ADD PRIMARY KEY (`idProntuario`);
@@ -127,9 +140,15 @@ ALTER TABLE `servicoSaude`
 ALTER TABLE `tipoHospital`
   ADD PRIMARY KEY (`idTipoHospital`);
 
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `nick` (`nick`);
+
 
 ALTER TABLE `tipoHospital`
   MODIFY `idTipoHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 ALTER TABLE `exameFisico`
   ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
@@ -139,6 +158,9 @@ ALTER TABLE `exameHemograma`
 
 ALTER TABLE `examePuncaoLiquosa`
   ADD CONSTRAINT `examePuncaoLiquosa_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+
+ALTER TABLE `prontuario`
+  ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idUsuario`);
 
 ALTER TABLE `recemNascido`
   ADD CONSTRAINT `recemNascido_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);

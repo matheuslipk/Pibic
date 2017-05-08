@@ -95,7 +95,7 @@ class Pagina {
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                <p class="text-muted text-center">
-               m47esportes Copyright © 2017 <br>
+               Hospital Copyright © 2017 <br>
                Seu ip é <?php echo $_SERVER['REMOTE_ADDR'].' em '; ?>
                <?php 
                if($this->usuarioLogado){
