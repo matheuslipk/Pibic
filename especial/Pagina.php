@@ -151,6 +151,11 @@ class Pagina {
       }else{
          echo "<li><a href='/view/entrevistaMae.php?prontuario={$prontuario}''>6</a></li>";
       }
+      if($pag ===7){
+         echo "<li class='active'><a href='/view/antecedentes.php?prontuario={$prontuario}''>7</a></li>";
+      }else{
+         echo "<li><a href='/view/antecedentes.php?prontuario={$prontuario}''>7</a></li>";
+      }
       
       
       echo "</ul>";

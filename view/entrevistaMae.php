@@ -52,8 +52,6 @@ class entrevistaMae extends Pagina{
             
          });
       </script>
-
-
       <?php
    }
 
@@ -65,9 +63,10 @@ class entrevistaMae extends Pagina{
    <h3>3.1 - Identificação e dados sociodemográficos</h3>
    <form>
       <div class="row">
+         <input style="display: none" value="<?php echo $_GET['prontuario']; ?>" name="prontuario">
          <div class="col-sm-6 form-group">
             <label>Nome</label>
-            <input class="form-control" name="nome">
+            <input required class="form-control" name="nome">
          </div>
          <div class="col-sm-6 form-group">
             <label>Data de nascimento</label>
@@ -170,8 +169,8 @@ class entrevistaMae extends Pagina{
       <div class="row">
          <div class="col-sm-6 form-group">
             <label>Morou em outro endereço durante a gestação?</label>
-            <label><input type="radio" name="outroEndereco" value="0">Não</label>
-            <label><input type="radio" name="outroEndereco" value="1">Sim</label>            
+            <label><input required type="radio" name="outroEndereco" value="0">Não</label>
+            <label><input required type="radio" name="outroEndereco" value="1">Sim</label>            
          </div>
       </div>
       
@@ -214,12 +213,44 @@ class entrevistaMae extends Pagina{
             <label>Bairro</label>
             <input name="bairro1" class="form-control">
          </div>
+      </div>
+      
+      
+      <div class="row">
          <div class="col-sm-6 form-group">
-            <label>Telefone</label>
-            <input type="tel" name="telefone1" class="form-control">
+            <label>Viajou durante a gestação?</label>
+            <label><input required type="radio" name="viajemGestacao" value="0">Não</label>
+            <label><input required type="radio" name="viajemGestacao" value="1">Sim</label>
          </div>
       </div>
       
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Data da ida</label>
+            <input type="date" name="dataIda" class="form-control">
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Data da volta</label>
+            <input type="date" name="dataVolta" class="form-control">
+         </div>
+      </div>
+      
+      <div class="row">
+         <div class="col-xs-4 form-group">
+            <label>País</label>
+            <input name="paisIda" class="form-control">
+         </div>
+         <div class="col-xs-4 form-group">
+            <label>Estado</label>
+            <input name="estadoIda" class="form-control">
+         </div>
+         <div class="col-xs-4 form-group">
+            <label>Município</label>
+            <input name="municipioIda" class="form-control">
+         </div>
+      </div>
+      
+      <button class="btn btn-success">Salvar</button>
    </form>
 </div>
 
