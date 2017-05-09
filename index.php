@@ -43,7 +43,7 @@ class Index extends Pagina{
          <div class="row">
             <div class="col-sm-6 form-group">
                <label>Questionários não terminados</label>
-               <input class="form-control">
+               <input class="form-control"><br>
                <table class="table table-condensed table-bordered" border="1">
                   <thead>
                      <tr>
@@ -72,7 +72,7 @@ class Index extends Pagina{
             
             <div class="col-sm-6 form-group">
                <label>Questionários concluídos</label>
-               <input class="form-control">
+               <input class="form-control"><br>
                <table class="table table-condensed table-bordered" border="1">
                   <thead>
                      <tr>

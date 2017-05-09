@@ -146,6 +146,12 @@ class Pagina {
       }else{
          echo "<li><a href='/view/2.5-examesImagem.php?prontuario={$prontuario}''>5</a></li>";
       }
+      if($pag ===6){
+         echo "<li class='active'><a href='/view/entrevistaMae.php?prontuario={$prontuario}''>6</a></li>";
+      }else{
+         echo "<li><a href='/view/entrevistaMae.php?prontuario={$prontuario}''>6</a></li>";
+      }
+      
       
       echo "</ul>";
       echo "</div> ";           

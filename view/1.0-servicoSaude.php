@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/TipoHospitalDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/Pagina.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ServicoSaudeDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/MunicipioDao.php';
 
 class Index extends Pagina{
    public function exibirBody() {
@@ -58,7 +59,20 @@ class Index extends Pagina{
             <div class="row">
                <div class="form-group col-sm-4">
                   <label>Município de ocorrência</label>
-                  <input name="municipioOcorrencia" type="text" class="form-control" <?php echo "value={$servico['municipioOcorrencia']}"; ?> >
+                  <select class="form-control" name="municipioOcorrencia">
+                     <?php
+                     $municDao = new MunicipioDao();
+                     $municipios = $municDao->getMunicipiosByUf('PI');
+                     foreach ($municipios as $municipio){
+                        if($servico['municipioOcorrencia']==$municipio['codigo']){
+                           echo "<option selected value='{$municipio['codigo']}'>{$municipio['nome']}</option>";
+                        }else{
+                           echo "<option value='{$municipio['codigo']}'>{$municipio['nome']}</option>";
+                        }
+                        
+                     }
+                     ?>
+                  </select>
                </div>
 
                <div class="form-group col-sm-4">
