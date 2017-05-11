@@ -169,6 +169,11 @@ class Pagina {
       }else{
          echo "<li><a href='/view/habitosGestacao.php?prontuario={$prontuario}''>9</a></li>";
       }
+      if($pag ===10){
+         echo "<li class='active'><a href='/view/prenatal.php?prontuario={$prontuario}''>10</a></li>";
+      }else{
+         echo "<li><a href='/view/prenatal.php?prontuario={$prontuario}''>10</a></li>";
+      }
       
       
       echo "</ul>";

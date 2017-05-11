@@ -126,7 +126,7 @@ class entrevistaMae extends Pagina{
       <div class="row">
          <div class="col-sm-6 form-group">
             <label>Estado</label>
-            <select class="form-control" type="number" name="uf" id="uf">
+            <select class="form-control" name="uf" id="uf">
                <?php
                $estadoDao = new EstadoDao();
                $estados = $estadoDao->getAllEstados();
