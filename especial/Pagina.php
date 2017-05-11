@@ -8,7 +8,10 @@ class Pagina {
 
 
    public final function display() {
-           
+      session_start();
+      if(!isset($_SESSION['idUsuario'])){
+         header("Location: /login.php");
+      }
       echo "<!DOCTYPE html>\n";
       echo "<html lang='pt-br'>\n";
       echo "<head>\n";
@@ -61,22 +64,22 @@ class Pagina {
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
              
-            <li class="dropdown">
+<!--            <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pagina 2<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Pagina 2-1</a></li>
                 <li><a href="#">Pagina 2-2</a></li>
               </ul>
-            </li>
+            </li>-->
             
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo 'Nome do usuário'; ?><span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo $_SESSION['nickUsuario']; ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                    <li><a href="#">Minha conta</a></li>
-                    <li><a href="#">Sair</a></li>
+                   <li><a href="/controll/logicaLogout.php">Sair</a></li>
                 </ul>
                 
             </li>

@@ -93,11 +93,10 @@ class Index extends Pagina{
 
             </div>
          </form>
-         <?php
-         parent::exibirPaginacaoQuest(1, $_GET['prontuario']);
-         ?>
-                  
       </div>
+      <?php
+      parent::exibirPaginacaoQuest(1, $_GET['prontuario']);
+      ?>
    </body>
       <?php
    }

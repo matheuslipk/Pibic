@@ -1,8 +1,7 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
-require_once $root.'/Ultilitarios.php';
-require_once $root.'/controll/Controller.php';
-Ultilitarios::sec_session_start();
-Controller::destruirSessaoAdmin();
-Controller::destruirSessaoAgente();
-header("Location: ".Ultilitarios::getLinkLogin().'?logout=true');
+session_start();
+unset($_SESSION['idUsuario']);
+unset($_SESSION['nickUsuario']);
+unset($_SESSION['tempoUsuario']);
+session_destroy();
+header("Location: /index.php?logout=true");
