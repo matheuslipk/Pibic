@@ -156,6 +156,16 @@ class Pagina {
       }else{
          echo "<li><a href='/view/antecedentes.php?prontuario={$prontuario}''>7</a></li>";
       }
+      if($pag ===8){
+         echo "<li class='active'><a href='/view/histObstetrico.php?prontuario={$prontuario}''>8</a></li>";
+      }else{
+         echo "<li><a href='/view/histObstetrico.php?prontuario={$prontuario}''>8</a></li>";
+      }
+      if($pag ===9){
+         echo "<li class='active'><a href='/view/habitosGestacao.php?prontuario={$prontuario}''>9</a></li>";
+      }else{
+         echo "<li><a href='/view/habitosGestacao.php?prontuario={$prontuario}''>9</a></li>";
+      }
       
       
       echo "</ul>";
