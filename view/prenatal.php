@@ -38,7 +38,7 @@ class entrevistaMae extends Pagina{
       parent::exibirBody();
       ?>
 <div class="container">   
-   <h4>3.3 - Histórico obstétrico/ginecológico</h4>
+   <h2>4 - Pré-natal</h2>
    <form>
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">

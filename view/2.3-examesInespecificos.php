@@ -103,7 +103,7 @@ class recemNascido extends Pagina{
          <button type="submit" class="btn btn-success">Enviar</button>         
       </form> 
    
-   <form>
+   <form method="post" action="/controll/examePuncaoLiquorica/inserirExamePuncaoLiquorica.php">
       <div class="row">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <div class="col-xs-12 form-group">
