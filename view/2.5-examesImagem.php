@@ -124,8 +124,8 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Ecocardiograma</label>   
-            <label><input required name="ecocardiograma" value="0" type="radio" id="tomografiaCranNao">Não</label>
-            <label><input required name="ecocardiograma" value="1" type="radio" id="tomografiaCranSim">Sim</label>
+            <label><input required name="ecocardiograma" value="0" type="radio" id="ecocardiogramaNao">Não</label>
+            <label><input required name="ecocardiograma" value="1" type="radio" id="ecocardiogramaSim">Sim</label>
          </div>
          <div class="col-xs-6 form-group">
             <label>Resultado</label>
@@ -134,7 +134,35 @@ class recemNascido extends Pagina{
             </select>
          </div>
       </div>
+      
+      <h4>Outros exames realizados</h4>
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Fundo do olho</label>   
+            <label><input required name="fundoOlho" value="0" type="radio" id="fundoOlhoNao">Não</label>
+            <label><input required name="fundoOlho" value="1" type="radio" id="fundoOlhoSim">Sim</label>
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Foi encontrada alguma alteração?</label>            
+            <label><input required name="alterFundoOlho" value="0" type="radio" id="alterFundoOlhoNao">Não</label>
+            <label><input required name="alterFundoOlho" value="1" type="radio" id="alterFundoOlhoSim">Sim</label>
+            <input class="form-control" name="descAlterFundoOlho" placeholder="Se sim, especificar">
+         </div>
+      </div>
 
+      <div class="row">
+         <div class="col-xs-6 form-group">
+            <label>Teste da orelhinha</label>   
+            <label><input required name="testeOrelhinha" value="0" type="radio" id="testeOrelhinhaNao">Não</label>
+            <label><input required name="testeOrelhinha" value="1" type="radio" id="testeOrelhinhaSim">Sim</label>
+         </div>
+         <div class="col-xs-6 form-group">
+            <label>Foi encontrada alguma alteração?</label>            
+            <label><input required name="alterTesteOrelhinha" value="0" type="radio" id="alterTesteOrelhinhaNao">Não</label>
+            <label><input required name="alterTesteOrelhinha" value="1" type="radio" id="alterTesteOrelhinhaSim">Sim</label>
+            <input class="form-control" name="descAlterTesteOrelhinha" placeholder="Se sim, especificar">
+         </div>
+      </div>
       
       <button type="submit" class="btn btn-success">Enviar</button>         
    </form>
