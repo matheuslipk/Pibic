@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 09/05/2017 às 00:29
+-- Tempo de geração: 11/05/2017 às 23:23
 -- Versão do servidor: 5.7.18-0ubuntu0.16.10.1
 -- Versão do PHP: 7.0.15-0ubuntu0.16.10.4
 
@@ -33,6 +33,39 @@ CREATE TABLE `estado` (
   `uf` char(2) NOT NULL,
   `regiao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `estado`
+--
+
+INSERT INTO `estado` VALUES
+(1, 12, 'Acre', 'AC', 1),
+(2, 27, 'Alagoas', 'AL', 2),
+(3, 16, 'Amapá', 'AP', 1),
+(4, 13, 'Amazonas', 'AM', 1),
+(5, 29, 'Bahia', 'BA', 2),
+(6, 23, 'Ceará', 'CE', 2),
+(7, 53, 'Distrito Federal', 'DF', 5),
+(8, 32, 'Espírito Santo', 'ES', 3),
+(9, 52, 'Goiás', 'GO', 5),
+(10, 21, 'Maranhão', 'MA', 2),
+(11, 51, 'Mato Grosso', 'MT', 5),
+(12, 50, 'Mato Grosso do Sul', 'MS', 5),
+(13, 31, 'Minas Gerais', 'MG', 3),
+(14, 15, 'Pará', 'PA', 2),
+(15, 25, 'Paraíba', 'PB', 2),
+(16, 41, 'Paraná', 'PR', 4),
+(17, 26, 'Pernambuco', 'PE', 2),
+(18, 22, 'Piauí', 'PI', 2),
+(19, 33, 'Rio de Janeiro', 'RJ', 3),
+(20, 24, 'Rio Grande do Norte', 'RN', 2),
+(21, 43, 'Rio Grande do Sul', 'RS', 4),
+(22, 11, 'Rondônia', 'RO', 1),
+(23, 14, 'Roraima', 'RR', 1),
+(24, 42, 'Santa Catarina', 'SC', 4),
+(25, 35, 'São Paulo', 'SP', 3),
+(26, 28, 'Sergipe', 'SE', 2),
+(27, 17, 'Tocantins', 'TO', 1);
 
 -- --------------------------------------------------------
 
@@ -87,10 +120,37 @@ CREATE TABLE `exameHemograma` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `examePuncaoLiquosa`
+-- Estrutura para tabela `exameImagem`
 --
 
-CREATE TABLE `examePuncaoLiquosa` (
+CREATE TABLE `exameImagem` (
+  `idProntuario` int(11) NOT NULL,
+  `tomografiaCran` int(11) NOT NULL,
+  `resultTomografiaCran` varchar(30) DEFAULT NULL,
+  `ressonanciaMagCran` int(11) NOT NULL,
+  `resultRessonanciaMagCran` varchar(30) DEFAULT NULL,
+  `ultrassomTrans` int(11) NOT NULL,
+  `resultUltrassomTrans` varchar(30) DEFAULT NULL,
+  `ultrassomAbd` int(11) NOT NULL,
+  `resultUltrassomAbd` varchar(30) DEFAULT NULL,
+  `ecocardiograma` int(11) NOT NULL,
+  `resultEcocardiograma` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `exameImagem`
+--
+
+INSERT INTO `exameImagem` VALUES
+(1, 0, '', 0, '', 0, '', 0, '', 1, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `examePuncaoLiquorica`
+--
+
+CREATE TABLE `examePuncaoLiquorica` (
   `idProntuario` int(11) NOT NULL,
   `puncaoLiquorica` int(11) NOT NULL,
   `dataPuncaoLiquorica` date DEFAULT NULL,
@@ -104,6 +164,13 @@ CREATE TABLE `examePuncaoLiquosa` (
   `cloreto` int(11) DEFAULT NULL,
   `glicose` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `examePuncaoLiquorica`
+--
+
+INSERT INTO `examePuncaoLiquorica` VALUES
+(1, 1, '2017-05-31', 'Límpido', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -251,9 +318,15 @@ ALTER TABLE `exameHemograma`
   ADD PRIMARY KEY (`idProntuario`);
 
 --
--- Índices de tabela `examePuncaoLiquosa`
+-- Índices de tabela `exameImagem`
 --
-ALTER TABLE `examePuncaoLiquosa`
+ALTER TABLE `exameImagem`
+  ADD PRIMARY KEY (`idProntuario`);
+
+--
+-- Índices de tabela `examePuncaoLiquorica`
+--
+ALTER TABLE `examePuncaoLiquorica`
   ADD PRIMARY KEY (`idProntuario`);
 
 --
@@ -333,10 +406,16 @@ ALTER TABLE `exameHemograma`
   ADD CONSTRAINT `exameHemograma_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 --
--- Restrições para tabelas `examePuncaoLiquosa`
+-- Restrições para tabelas `exameImagem`
 --
-ALTER TABLE `examePuncaoLiquosa`
-  ADD CONSTRAINT `examePuncaoLiquosa_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+ALTER TABLE `exameImagem`
+  ADD CONSTRAINT `exameImagem_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+
+--
+-- Restrições para tabelas `examePuncaoLiquorica`
+--
+ALTER TABLE `examePuncaoLiquorica`
+  ADD CONSTRAINT `examePuncaoLiquorica_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 --
 -- Restrições para tabelas `municipio`

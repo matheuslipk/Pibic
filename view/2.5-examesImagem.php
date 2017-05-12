@@ -42,7 +42,7 @@ class recemNascido extends Pagina{
       ?>
 <div class="container">
    <h3>2.5 - Exames de imagem</h3>  
-   <form method="get" action="">
+   <form method="post" action="/controll/exameImagem/inserirExameImagem.php">
       <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
       <div class="row">
          <div class="col-xs-6 form-group">
@@ -116,7 +116,7 @@ class recemNascido extends Pagina{
          <div class="col-xs-6 form-group">
             <label>Resultado</label>
             <select name="resultUltrassomAbd" class="form-control">
-               
+               <option></option>
             </select>
          </div>
       </div>
@@ -124,13 +124,13 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Ecocardiograma</label>   
-            <label><input required name="tomografiaCran" value="0" type="radio" id="tomografiaCranNao">Não</label>
-            <label><input required name="tomografiaCran" value="1" type="radio" id="tomografiaCranSim">Sim</label>
+            <label><input required name="ecocardiograma" value="0" type="radio" id="tomografiaCranNao">Não</label>
+            <label><input required name="ecocardiograma" value="1" type="radio" id="tomografiaCranSim">Sim</label>
          </div>
          <div class="col-xs-6 form-group">
             <label>Resultado</label>
-            <select name="resultTomografiaCran" class="form-control">
-               
+            <select name="resultEcocardiograma" class="form-control">
+               <option></option>
             </select>
          </div>
       </div>

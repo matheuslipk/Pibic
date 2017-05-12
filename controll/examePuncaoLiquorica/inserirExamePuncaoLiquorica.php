@@ -22,13 +22,13 @@ function inserirExamePuncaoLiquorica(){
       $result = $examePuncaoLiquoricaDao->updatePuncaoLiquorica($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.5-examesImagem.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $examePuncaoLiquoricaDao->inserirPuncaoLiquorica($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.5-examesImagem.php?prontuario={$array['idProntuario']}");
       }
    }
    
