@@ -23,6 +23,23 @@ CREATE TABLE `dadossociodemograficos` (
 INSERT INTO `dadossociodemograficos` VALUES
 (1, '0', '2017-05-05', '', 'Sem escolaridade', 'Solteira', 'CEO da maior empresa do mundo', 10, 50000, 1);
 
+CREATE TABLE `durantegestacao` (
+  `idProntuario` int(11) NOT NULL,
+  `contatoPesticida` int(11) NOT NULL,
+  `contatoAgrotoxico` int(11) NOT NULL,
+  `descAgrotoxicos` varchar(50) NOT NULL,
+  `exameRX` int(11) NOT NULL,
+  `periodoExameRX` varchar(30) NOT NULL,
+  `usoAcidoFolico` int(11) NOT NULL,
+  `dataUsoAcidoFolico` date NOT NULL,
+  `usoFerro` int(11) NOT NULL,
+  `dataUsoFerro` date NOT NULL,
+  `usoOutrosMed` int(11) NOT NULL,
+  `descUsoOutrosMed` varchar(50) NOT NULL,
+  `dataIniTratamento` date NOT NULL,
+  `manchaVermelha` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `endereco` (
   `idProntuario` int(11) NOT NULL,
   `uf` char(2) NOT NULL,
@@ -148,6 +165,19 @@ CREATE TABLE `examepuncaoliquorica` (
 INSERT INTO `examepuncaoliquorica` VALUES
 (1, 1, '2017-05-16', 'LÃ­mpido', 0, 0, 0, 0, 0, 0, 0, 0);
 
+CREATE TABLE `histobstetrico` (
+  `idProntuario` int(11) NOT NULL,
+  `primGestacao` int(11) NOT NULL,
+  `quantGravidez` int(11) DEFAULT NULL,
+  `quantVivos` int(11) DEFAULT NULL,
+  `quantMortos` int(11) DEFAULT NULL,
+  `teveAborto` int(11) DEFAULT NULL,
+  `quantAbortos` int(11) DEFAULT NULL,
+  `malformacao` int(11) DEFAULT NULL,
+  `descMalformacao` varchar(50) DEFAULT NULL,
+  `dataNascimento` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `municipio` (
   `codigo` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
@@ -219,6 +249,9 @@ ALTER TABLE `dadossociodemograficos`
   ADD PRIMARY KEY (`idProntuario`),
   ADD KEY `enderecoAtual` (`enderecoAtual`);
 
+ALTER TABLE `durantegestacao`
+  ADD PRIMARY KEY (`idProntuario`);
+
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`idProntuario`),
   ADD KEY `municipio` (`municipio`),
@@ -238,6 +271,9 @@ ALTER TABLE `exameimagem`
   ADD PRIMARY KEY (`idProntuario`);
 
 ALTER TABLE `examepuncaoliquorica`
+  ADD PRIMARY KEY (`idProntuario`);
+
+ALTER TABLE `histobstetrico`
   ADD PRIMARY KEY (`idProntuario`);
 
 ALTER TABLE `municipio`
@@ -291,6 +327,9 @@ ALTER TABLE `exameimagem`
 
 ALTER TABLE `examepuncaoliquorica`
   ADD CONSTRAINT `examePuncaoLiquorica_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+
+ALTER TABLE `histobstetrico`
+  ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 ALTER TABLE `municipio`
   ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);

@@ -126,7 +126,7 @@ class entrevistaMae extends Pagina{
             <label><input type="radio" value="1" name="usoOutrosMed">Sim</label>
             <input name="descUsoOutrosMed" class="form-control" placeholder="Especifique os outros medicamentos">
             <label>Data de início do tratamento</label>
-            <input type="date" name="dataUsoFerro" class="form-control">
+            <input type="date" name="dataIniTratamento" class="form-control">
          </div> 
       </div>
       
