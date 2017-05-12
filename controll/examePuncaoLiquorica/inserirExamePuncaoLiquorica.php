@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ExamePuncaoLiquosaDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ExamePuncaoLiquoricaDao.php';
 
 function inserirExamePuncaoLiquorica(){
    

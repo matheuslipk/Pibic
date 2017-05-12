@@ -61,7 +61,7 @@ class entrevistaMae extends Pagina{
 <div class="container">   
    <h2 style="text-align: center">3 - Entrevista com a mãe</h2>
    <h3>3.1 - Identificação e dados sociodemográficos</h3>
-   <form>
+   <form method="post" action="/controll/dadosSociodemograficos/inserirDadosSociodemograficos.php">
       <div class="row">
          <input style="display: none" value="<?php echo $_GET['prontuario']; ?>" name="prontuario">
          <div class="col-sm-6 form-group">
