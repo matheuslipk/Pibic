@@ -19,7 +19,7 @@ class entrevistaMae extends Pagina{
       ?>
 <div class="container">   
    <h3>3.2 - Antecedentes</h3>
-   <form>
+   <form method="post" action="/controll/antecedentes/inserirAntecedentes.php">
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
@@ -61,33 +61,29 @@ class entrevistaMae extends Pagina{
             <table class="table">
                <tbody>
                   <tr>
-                     <td><label><input type="checkbox">Diabétes</label></td>
-                     <td><label><input type="checkbox">Outras doenças metabolicas</label></td>
+                     <td><label><input name="diabetes" type="checkbox">Diabétes</label></td>
+                     <td><label><input name="outrasMetabolicas" type="checkbox">Outras doenças metabolicas</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Hipertensão arterial sistêmica</label></td>
-                     <td><label><input type="checkbox">Cardiopatia crônica</label></td>
+                     <td><label><input name="hiperArterial" type="checkbox">Hipertensão arterial sistêmica</label></td>
+                     <td><label><input name="cardiopatia" type="checkbox">Cardiopatia crônica</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Diabétes</label></td>
-                     <td><label><input type="checkbox">Outras doenças metabolicas</label></td>
+                     <td><label><input name="doencaRenal" type="checkbox">Doença renal crônica</label></td>
+                     <td><label><input name="pneumopatia" type="checkbox">Pneumopatias crônicas</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Doença renal crônica</label></td>
-                     <td><label><input type="checkbox">Pneumopatias crônicas</label></td>
+                     <td><label><input name="hemoglobinopatia" type="checkbox">Hemoglobinopatia</label></td>
+                     <td><label><input name="cancer" type="checkbox">Câncer</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Hemoglobinopatia</label></td>
-                     <td><label><input type="checkbox">Câncer</label></td>
-                  </tr>
-                  <tr>
-                     <td><label><input type="checkbox">Doença auto-imune</label></td>
-                     <td><label><input type="checkbox">Doença neuroléptica</label></td>
+                     <td><label><input name="autoimune" type="checkbox">Doença auto-imune</label></td>
+                     <td><label><input name="neuroleptica" type="checkbox">Doença neuroléptica</label></td>
                   </tr>
                </tbody>
             </table>
             
-            <input name="doencaPreExist" class="form-control" placeholder="Se houver outras, especifique aqui">
+            <input name="outros" class="form-control" placeholder="Se houver outras, especifique aqui">
          </div>
          
          <div class="col-sm-6 form-group">
@@ -97,21 +93,20 @@ class entrevistaMae extends Pagina{
             <table class="table">
                <tbody>
                   <tr>
-                     <td><label><input type="checkbox">HIV</label></td>
-                     <td><label><input type="checkbox">Sífilis</label></td>
+                     <td><label><input name="hiv" type="checkbox">HIV</label></td>
+                     <td><label><input name="sifilis" type="checkbox">Sífilis</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Gonorréia</label></td>
-                     <td><label><input type="checkbox">Clamídia</label></td>
+                     <td><label><input name="gonorreia" type="checkbox">Gonorréia</label></td>
+                     <td><label><input name="clamidia" type="checkbox">Clamídia</label></td>
                   </tr>
                   <tr>
-                     <td><label><input type="checkbox">Hepatites B e/ou C</label></td>
-                     <td><label><input type="checkbox">Herpes simples</label></td>
+                     <td><label><input name="hepatite" type="checkbox">Hepatites B e/ou C</label></td>
+                     <td><label><input name="herpes" type="checkbox">Herpes simples</label></td>
                   </tr>
                </tbody>
             </table>
-            <input name="dstPreExist" class="form-control" placeholder="Se houver outras, especifique aqui">
-
+            <input name="outrasDsts" class="form-control" placeholder="Se houver outras, especifique aqui">
 
          </div>
       </div>

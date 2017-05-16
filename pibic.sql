@@ -7,6 +7,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 
+CREATE TABLE `antecedentes` (
+  `idProntuario` int(11) NOT NULL,
+  `grauParentesco` int(11) NOT NULL,
+  `descGrauParentesco` varchar(50) DEFAULT NULL,
+  `malFormacao` int(11) NOT NULL,
+  `descMalFormacao` varchar(50) DEFAULT NULL,
+  `parenteMicrocefalia` int(11) NOT NULL,
+  `usoMedContinuo` int(11) NOT NULL,
+  `descUsoMedContinuo` varchar(50) DEFAULT NULL,
+  `doencaPreExist` int(11) NOT NULL,
+  `descDoencaPreExist` int(11) DEFAULT NULL,
+  `dst` int(11) NOT NULL,
+  `descDstPreExist` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `antecedentes` VALUES
+(1, 1, '', 1, '', 1, 1, '', 1, NULL, 0, NULL);
+
 CREATE TABLE `dadossociodemograficos` (
   `idProntuario` int(11) NOT NULL,
   `nome` varchar(30) NOT NULL,
@@ -22,6 +40,38 @@ CREATE TABLE `dadossociodemograficos` (
 
 INSERT INTO `dadossociodemograficos` VALUES
 (1, '0', '2017-05-05', '', 'Sem escolaridade', 'Solteira', 'CEO da maior empresa do mundo', 10, 50000, 1);
+
+CREATE TABLE `doencapreexist` (
+  `idProntuario` int(11) NOT NULL,
+  `diabetes` int(11) DEFAULT NULL,
+  `outrasMetabolicas` int(11) DEFAULT NULL,
+  `hiperArterial` int(11) DEFAULT NULL,
+  `cardiopatia` int(11) DEFAULT NULL,
+  `doencaRenal` int(11) DEFAULT NULL,
+  `pneumopatia` int(11) DEFAULT NULL,
+  `hemoglobinopatia` int(11) DEFAULT NULL,
+  `cancer` int(11) DEFAULT NULL,
+  `autoimune` int(11) DEFAULT NULL,
+  `neuroleptica` int(11) DEFAULT NULL,
+  `outros` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+INSERT INTO `doencapreexist` VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '');
+
+CREATE TABLE `dstpreexist` (
+  `idProntuario` int(11) NOT NULL,
+  `hiv` int(11) DEFAULT NULL,
+  `sifilis` int(11) DEFAULT NULL,
+  `gonorreia` int(11) DEFAULT NULL,
+  `clamidia` int(11) DEFAULT NULL,
+  `hepatite` int(11) DEFAULT NULL,
+  `herpes` int(11) DEFAULT NULL,
+  `outrasDsts` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+INSERT INTO `dstpreexist` VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 CREATE TABLE `durantegestacao` (
   `idProntuario` int(11) NOT NULL,
@@ -245,9 +295,20 @@ INSERT INTO `usuario` VALUES
 (100, 'matheuslipk', 'Matheus AraÃºjo de Alcantara', '7c4a8d09ca3762af61e59520943dc26494f8941b');
 
 
+ALTER TABLE `antecedentes`
+  ADD PRIMARY KEY (`idProntuario`),
+  ADD KEY `descDoencaPreExist` (`descDoencaPreExist`),
+  ADD KEY `descDstPreExist` (`descDstPreExist`);
+
 ALTER TABLE `dadossociodemograficos`
   ADD PRIMARY KEY (`idProntuario`),
   ADD KEY `enderecoAtual` (`enderecoAtual`);
+
+ALTER TABLE `doencapreexist`
+  ADD PRIMARY KEY (`idProntuario`);
+
+ALTER TABLE `dstpreexist`
+  ADD PRIMARY KEY (`idProntuario`);
 
 ALTER TABLE `durantegestacao`
   ADD PRIMARY KEY (`idProntuario`);
@@ -307,14 +368,21 @@ ALTER TABLE `tipohospital`
 ALTER TABLE `usuario`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
+ALTER TABLE `antecedentes`
+  ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`descDoencaPreExist`) REFERENCES `doencapreexist` (`idProntuario`),
+  ADD CONSTRAINT `antecedentes_ibfk_2` FOREIGN KEY (`descDstPreExist`) REFERENCES `dstpreexist` (`idProntuario`);
+
 ALTER TABLE `dadossociodemograficos`
   ADD CONSTRAINT `dadossociodemograficos_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
   ADD CONSTRAINT `dadossociodemograficos_ibfk_2` FOREIGN KEY (`enderecoAtual`) REFERENCES `endereco` (`idProntuario`);
 
+ALTER TABLE `doencapreexist`
+  ADD CONSTRAINT `doencapreexist_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`codigo`),
   ADD CONSTRAINT `endereco_ibfk_4` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
-  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
+  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
 
 ALTER TABLE `examefisico`
   ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
@@ -332,7 +400,7 @@ ALTER TABLE `histobstetrico`
   ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 ALTER TABLE `municipio`
-  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
+  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
 
 ALTER TABLE `prontuario`
   ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idUsuario`);
