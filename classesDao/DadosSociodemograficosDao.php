@@ -44,7 +44,7 @@ class DadosSociodemogradicosDao {
               . "racaCor=?, escolaridade=?, estadoCivil=?, ocupacao=?, "
               . "pessoasNaCasa=?, rendaFamiliar=?, enderecoAtual=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("issssssidi", $array['nome'], 
+      $stmt->bind_param("ssssssidii", $array['nome'], 
               $array['dataNascimento'], $array['racaCor'], $array['escolaridade'], 
               $array['estadoCivil'], $array['ocupacao'], $array['pessoasNaCasa'],
               $array['rendaFamiliar'], $array['enderecoAtual'], $array['idProntuario']);

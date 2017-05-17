@@ -28,9 +28,9 @@ function inserirDadosSociodemogradicos(){
    if(isEnderecoExiste($_POST['prontuario'])){
       $result1 = $enderecoDao->updateEndereco($array);
       echo $result1;
-      if($result1 === TRUE){
-         header("Location: /view/antecedentes.php?prontuario={$array['idProntuario']}");
-      }
+//      if($result1 === TRUE){
+//         header("Location: /view/antecedentes.php?prontuario={$array['idProntuario']}");
+//      }
       if(isDadosSocioExiste($_POST['prontuario'])){
          $result = $dadosDao->updateDadosSociodemogradicos($array);
          echo $result;
@@ -46,6 +46,7 @@ function inserirDadosSociodemogradicos(){
       }  
    }else{
       $result1 = $enderecoDao->inserirEndereco($array);
+      $dadosDao->inserirDadosSociodemogradicos($array);
       echo $result1;
       if($result1 === TRUE){
          header("Location: /view/antecedentes.php?prontuario={$array['idProntuario']}");
