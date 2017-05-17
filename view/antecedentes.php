@@ -24,15 +24,15 @@ class entrevistaMae extends Pagina{
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label>Você tem algum grau de parentesco com seu parceiro?</label>
-            <label><input type="radio" value="0" name="grauParentesco">Não</label>
-            <label><input type="radio" value="1" name="grauParentesco">Sim</label>
+            <label><input required type="radio" value="0" name="grauParentesco">Não</label>
+            <label><input required type="radio" value="1" name="grauParentesco">Sim</label>
             <input class="form-control" name="descGrauParentesco" placeholder="Se sim - Especificar aqui">
          </div>
          
          <div class="col-sm-6 form-group">
             <label>Você possui alguma malformação congênita?</label>
-            <label><input type="radio" value="0" name="malFormacao">Não</label>
-            <label><input type="radio" value="1" name="malFormacao">Sim</label>
+            <label><input required type="radio" value="0" name="malFormacao">Não</label>
+            <label><input required type="radio" value="1" name="malFormacao">Sim</label>
             <input class="form-control" name="descMalFormacao" placeholder="Se sim - Especificar aqui">
          </div>
       </div>
@@ -40,14 +40,14 @@ class entrevistaMae extends Pagina{
       <div class="row">
          <div class="col-sm-6 form-group">
             <label>Há alguém na sua família, ou na do seu parceiro, que nasceu com microcefalia?</label>
-            <label><input type="radio" value="0" name="parenteMicrocefalia">Não</label>
-            <label><input type="radio" value="1" name="parenteMicrocefalia">Sim</label>
+            <label><input required type="radio" value="0" name="parenteMicrocefalia">Não</label>
+            <label><input required type="radio" value="1" name="parenteMicrocefalia">Sim</label>
          </div>
          
          <div class="col-sm-6 form-group">
             <label>Você fazia uso de algum medicamento de uso contínuo?</label>
-            <label><input type="radio" value="0" name="usoMedContinuo">Não</label>
-            <label><input type="radio" value="1" name="usoMedContinuo">Sim</label>
+            <label><input required type="radio" value="0" name="usoMedContinuo">Não</label>
+            <label><input required type="radio" value="1" name="usoMedContinuo">Sim</label>
             <input class="form-control" name="descUsoMedContinuo" placeholder="Se sim - Especificar aqui">
          </div>
       </div>
@@ -55,8 +55,8 @@ class entrevistaMae extends Pagina{
       <div class="row">
          <div class="col-sm-6 form-group">
             <label>Teve diagnóstico de alguma doença pré-existente?</label>
-            <label><input type="radio" value="0" name="doencaPreExist">Não</label>
-            <label><input type="radio" value="1" name="doencaPreExist">Sim</label>
+            <label><input required type="radio" value="0" name="doencaPreExist">Não</label>
+            <label><input required type="radio" value="1" name="doencaPreExist">Sim</label>
             <label>Se sim quais?</label><br>
             <table class="table">
                <tbody>
@@ -88,8 +88,8 @@ class entrevistaMae extends Pagina{
          
          <div class="col-sm-6 form-group">
             <label>Teve diagnóstico ou recebeu tratamento para alguma doença sexualmente transmissível?</label>
-            <label><input type="radio" value="0" name="dst">Não</label>
-            <label><input type="radio" value="1" name="dst">Sim</label>
+            <label><input required type="radio" value="0" name="dst">Não</label>
+            <label><input required type="radio" value="1" name="dst">Sim</label>
             <table class="table">
                <tbody>
                   <tr>

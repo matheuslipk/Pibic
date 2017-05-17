@@ -1,12 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/AntecedentesDao.php';
 
+
+
 function inserirAntecedentes(){
    
    $array['idProntuario'] = $_POST['prontuario'];
    $array['grauParentesco'] = $_POST['grauParentesco'];
    $array['descGrauParentesco'] = isset($_POST['descGrauParentesco']) ? $_POST['descGrauParentesco'] : NULL;
-   $array['malFormacao'] = isset($_POST['malFormacao']) ? TRUE : FALSE;
+   $array['malFormacao'] = $_POST['malFormacao'];
    $array['descMalFormacao'] = isset($_POST['descMalFormacao']) ? $_POST['descMalFormacao'] : NULL;
    $array['parenteMicrocefalia'] = $_POST['parenteMicrocefalia'];
    $array['usoMedContinuo'] = $_POST['usoMedContinuo'];
@@ -14,14 +16,12 @@ function inserirAntecedentes(){
    $array['doencaPreExist'] = $_POST['doencaPreExist'];
    
    
-   $array['descDoencaPreExist'] = isset($_POST['descDoencaPreExist']) ? TRUE : NULL;
+   $array['descDoencaPreExist'] = $_POST['prontuario'];
+   require_once $_SERVER['DOCUMENT_ROOT'].'/controll/doencaPreExist/inserirDoencaPreExist.php';
    
-   
-   $array['dst'] = isset($_POST['dst']) ? TRUE : FALSE;
-   
-   
-   $array['descDstPreExist'] = isset($_POST['descDstPreExist']) ? TRUE : NULL;
-   
+   $array['dst'] = $_POST['dst']; 
+   $array['descDstPreExist'] = $_POST['prontuario'];
+   require_once $_SERVER['DOCUMENT_ROOT'].'/controll/dstPreExist/inserirDstPreExist.php';
    
    
    
