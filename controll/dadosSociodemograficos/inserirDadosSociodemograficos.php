@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/DadosSociodemograFicosDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/DadosSociodemograficosDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/EnderecoDao.php';
 
 function inserirDadosSociodemogradicos(){

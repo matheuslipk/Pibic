@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class ExameImagemDao {
    public function inserirExameImagem($array){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameImagem VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO exameimagem VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iisisisisisiisiis", $array['idProntuario'], $array['tomografiaCran'], 
               $array['resultTomografiaCran'], $array['ressonanciaMagCran'], $array['resultRessonanciaMagCran'], 
@@ -25,7 +25,7 @@ class ExameImagemDao {
    
    public function getExameImagemByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM exameImagem WHERE idProntuario=?";
+      $query = "SELECT * FROM exameimagem WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -42,7 +42,7 @@ class ExameImagemDao {
    
    public function updateExameImagem($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE exameImagem SET tomografiaCran=?, resultTomografiaCran=?, "
+      $query = "UPDATE exameimagem SET tomografiaCran=?, resultTomografiaCran=?, "
               . "ressonanciaMagCran=?, resultRessonanciaMagCran=?, ultrassomTrans=?, resultUltrassomTrans=?, "
               . "ultrassomAbd=?, resultUltrassomAbd=?, ecocardiograma=?, resultEcocardiograma=?,"
               . "fundoOlho=?, alterFundoOlho=?, descAlterFundoOlho=?, "

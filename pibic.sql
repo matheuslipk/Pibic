@@ -76,17 +76,18 @@ INSERT INTO `dstpreexist` VALUES
 CREATE TABLE `durantegestacao` (
   `idProntuario` int(11) NOT NULL,
   `contatoPesticida` int(11) NOT NULL,
+  `descPesticidas` varchar(50) DEFAULT NULL,
   `contatoAgrotoxico` int(11) NOT NULL,
-  `descAgrotoxicos` varchar(50) NOT NULL,
+  `descAgrotoxicos` varchar(50) DEFAULT NULL,
   `exameRX` int(11) NOT NULL,
-  `periodoExameRX` varchar(30) NOT NULL,
+  `periodoExameRX` varchar(30) DEFAULT NULL,
   `usoAcidoFolico` int(11) NOT NULL,
-  `dataUsoAcidoFolico` date NOT NULL,
+  `dataUsoAcidoFolico` date DEFAULT NULL,
   `usoFerro` int(11) NOT NULL,
-  `dataUsoFerro` date NOT NULL,
+  `dataUsoFerro` date DEFAULT NULL,
   `usoOutrosMed` int(11) NOT NULL,
-  `descUsoOutrosMed` varchar(50) NOT NULL,
-  `dataIniTratamento` date NOT NULL,
+  `descUsoOutrosMed` varchar(50) DEFAULT NULL,
+  `dataIniTratamento` date DEFAULT NULL,
   `manchaVermelha` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
