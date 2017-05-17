@@ -6,7 +6,7 @@ class MunicipioDao {
    
    public function getMunicipioById($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM prontuario WHERE idProntuario=?";
+      $query = "SELECT * FROM municipio WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){

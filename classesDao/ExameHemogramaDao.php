@@ -5,7 +5,7 @@ class ExameHemogramaDao {
    public function inserirExameHemograma($array){
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameHemograma VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO examehemograma VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iisiiiiiiiii", $array['idProntuario'], $array['hemograma'], 
               $array['dataHemograma'], $array['hb'], $array['ht'], $array['leococitos'], 
@@ -24,7 +24,7 @@ class ExameHemogramaDao {
    
    public function getExameHemogramaByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM exameHemograma WHERE idProntuario=?";
+      $query = "SELECT * FROM examehemograma WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -41,7 +41,7 @@ class ExameHemogramaDao {
    
    public function updateExameHemograma($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE exameHemograma SET hemograma=?, dataHemograma=?, hb=?, "
+      $query = "UPDATE examehemograma SET hemograma=?, dataHemograma=?, hb=?, "
               . "ht=?, leococitos=?, bastonetes=?, segmentados=?, "
               . "monocitos=?, linfocitos=?, plaquetas=?, "
               . "glicose=? WHERE idProntuario=?";

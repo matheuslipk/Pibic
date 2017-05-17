@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class DadosSociodemogradicosDao {
    public function inserirDadosSociodemogradicos($array){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO dadosSociodemograficos VALUES (?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO dadossociodemograficos VALUES (?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("issssssidi", $array['idProntuario'], $array['nome'], 
               $array['dataNascimento'], $array['racaCor'], $array['escolaridade'], 
@@ -23,7 +23,7 @@ class DadosSociodemogradicosDao {
    
    public function getDadosSociodemogradicosByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM dadosSociodemograficos WHERE idProntuario=?";
+      $query = "SELECT * FROM dadossociodemograficos WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -40,7 +40,7 @@ class DadosSociodemogradicosDao {
    
    public function updateDadosSociodemogradicos($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE dadosSociodemograficos SET nome=?, dataNascimento=?, "
+      $query = "UPDATE dadossociodemograficos SET nome=?, dataNascimento=?, "
               . "racaCor=?, escolaridade=?, estadoCivil=?, ocupacao=?, "
               . "pessoasNaCasa=?, rendaFamiliar=?, enderecoAtual=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);

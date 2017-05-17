@@ -25,7 +25,7 @@ class RecemNascidoDao {
       $outroDano = $array['outroDano'];
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO recemNascido VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO recemnascido VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("issiisississ", $idProntuario, $dataParto, $sexo, 
               $idadeGestSem, $idadeGestDia, $classIdadeGest, $gemelar, 
@@ -43,7 +43,7 @@ class RecemNascidoDao {
    
    public function getRecemNascidoByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM recemNascido WHERE idProntuario=?";
+      $query = "SELECT * FROM recemnascido WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -81,7 +81,7 @@ class RecemNascidoDao {
       $outroDano = $array['outroDano'];
       
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE recemNascido SET dataParto=?, sexo=?, idadeGestacionalSem=?, "
+      $query = "UPDATE recemnascido SET dataParto=?, sexo=?, idadeGestacionalSem=?, "
               . "idadeGestacionalDia=?, classIdadeGest=?, gemelar=?, tipoGemelar=?, "
               . "tipoParto=?, danoPerinatal=?, tipoDanoPerinatal=?, outroDano=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);

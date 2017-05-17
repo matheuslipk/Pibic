@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class TipoHospitalDao {
    public function getAllTipoHospital(){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM tipoHospital";
+      $query = "SELECT * FROM tipohospital";
       $stmt = $con->prepare($query);
       if($stmt->execute()){
          $result = $stmt->get_result();

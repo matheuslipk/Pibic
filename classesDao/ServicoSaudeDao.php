@@ -10,7 +10,7 @@ class ServicoSaudeDao {
       $municipioOcorrencia = $array['municipioOcorrencia'];
       $resp = $array['resp'];
       
-      $query = "INSERT INTO servicoSaude VALUES (?,?,?,?,?)";
+      $query = "INSERT INTO servicosaude VALUES (?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iisss", $idProntuario, $idTipoHospital, $identServico, $municipioOcorrencia, $resp);
       if($stmt->execute()){
@@ -23,7 +23,7 @@ class ServicoSaudeDao {
    
    public function getServicoSaudeById($prontuario){      
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM servicoSaude WHERE idProntuario=?";
+      $query = "SELECT * FROM servicosaude WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -44,7 +44,7 @@ class ServicoSaudeDao {
       $municipioOcorrencia = $array['municipioOcorrencia'];
       $resp = $array['resp'];
       
-      $query = "UPDATE servicoSaude SET idTipoHospital=?, "
+      $query = "UPDATE servicosaude SET idTipoHospital=?, "
               . "identServico=?, municipioOcorrencia=?, resp=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("isssi", $idTipoHospital, $identServico, $municipioOcorrencia, $resp, $idProntuario);

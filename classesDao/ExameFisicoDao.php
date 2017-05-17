@@ -5,7 +5,7 @@ class ExameFisicoDao {
    public function inserirExameFisico($array){
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameFisico VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO examefisico VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iiiiiiiiissis", $array['idProntuario'], $array['peso'], 
               $array['estatura'], $array['perimToracico'], $array['perimCefalico'], 
@@ -25,7 +25,7 @@ class ExameFisicoDao {
    
    public function getExameFisicoByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM exameFisico WHERE idProntuario=?";
+      $query = "SELECT * FROM examefisico WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -42,7 +42,7 @@ class ExameFisicoDao {
    
    public function updateExameFisico($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE exameFisico SET peso=?, estatura=?, perimToracico=?, "
+      $query = "UPDATE examefisico SET peso=?, estatura=?, perimToracico=?, "
               . "perimCefalico=?, apgar1=?, apgar5=?, apgar10=?, malformacao=?, "
               . "tipoMalformacao=?, descMalformacao=?, achadosClinicos=?, "
               . "outrosAchadosClinicos=? WHERE idProntuario=?";

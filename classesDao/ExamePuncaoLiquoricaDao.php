@@ -5,7 +5,7 @@ class ExamePuncaoLiquoricaDao {
    public function inserirPuncaoLiquorica($array){
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO examePuncaoLiquorica VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO examepuncaoliquorica VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iissiiiiiiii", $array['idProntuario'], $array['puncaoLiquorica'], 
               $array['dataPuncaoLiquorica'], $array['aspecto'], $array['hemacias'], 
@@ -25,7 +25,7 @@ class ExamePuncaoLiquoricaDao {
    
    public function getPuncaoLiquoricaByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM examePuncaoLiquorica WHERE idProntuario=?";
+      $query = "SELECT * FROM examepuncaoliquorica WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -42,7 +42,7 @@ class ExamePuncaoLiquoricaDao {
    
    public function updatePuncaoLiquorica($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE examePuncaoLiquorica SET puncaoLiquorica=?, dataPuncaoLiquorica=?, "
+      $query = "UPDATE examepuncaoliquorica SET puncaoLiquorica=?, dataPuncaoLiquorica=?, "
               . "aspecto=?, hemacias=?, leococitos=?, bastonetes=?, segmentados=?, "
               . "monocitos=?, linfocitos=?, cloreto=?, glicose=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
