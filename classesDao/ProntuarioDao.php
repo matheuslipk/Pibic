@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class ProntuarioDao {
    public function inserirProntuario($prontuario, $usuario){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO prontuario idProntuario, usuario VALUES (?,?)";
+      $query = "INSERT INTO prontuario (idProntuario, usuario) VALUES (?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("ii", $prontuario, $usuario);
       if($stmt->execute()){

@@ -27,7 +27,7 @@ class RecemNascidoDao {
       $con = ConexaoDao::getConecao();
       $query = "INSERT INTO recemNascido VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("issiisissis", $idProntuario, $dataParto, $sexo, 
+      $stmt->bind_param("issiisississ", $idProntuario, $dataParto, $sexo, 
               $idadeGestSem, $idadeGestDia, $classIdadeGest, $gemelar, 
               $tipoGemelar, $tipoParto, $danoPerinatal, $tipoDanoPerinatal, $outroDano);
       if($stmt->execute()){
