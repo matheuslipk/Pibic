@@ -56,7 +56,7 @@ class entrevistaMae extends Pagina{
             <label>Algum destes nasceu com alguma malformação congênita?</label>
             <label><input type="radio" value="0" name="malformacao">Não</label>
             <label><input type="radio" value="1" name="malformacao">Sim</label>
-            <input name="descMalformacao" type="number" class="form-control" placeholder="Se sim, quail(is)?">
+            <input name="descMalformacao" class="form-control" placeholder="Se sim, quail(is)?">
          </div>
       </div>
       
