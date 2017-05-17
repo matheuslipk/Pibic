@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 
-class ExameFisicoDao {
+class ExameHemogramaDao {
    public function inserirExameHemograma($array){
       
       $con = ConexaoDao::getConecao();
@@ -22,7 +22,7 @@ class ExameFisicoDao {
       return $erro;
    }
    
-   public function getExameExameHemograma($prontuario){
+   public function getExameHemogramaByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
       $query = "SELECT * FROM exameHemograma WHERE idProntuario=?";
       $stmt = $con->prepare($query);
@@ -46,11 +46,11 @@ class ExameFisicoDao {
               . "monocitos=?, linfocitos=?, plaquetas=?, "
               . "glicose=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("isiiiiiiiiii", $array['peso'], 
-              $array['estatura'], $array['perimToracico'], $array['perimCefalico'], 
-              $array['apgar1'], $array['apgar5'], $array['apgar10'], 
-              $array['malformacao'], $array['tipoMalformacao'], $array['descMalformacao'], 
-              $array['achadosClinicos'], $array['outrosAchadosClinicos'], $array['idProntuario']);
+      $stmt->bind_param("isiiiiiiiiii", $array['hemograma'], 
+              $array['dataHemograma'], $array['hb'], $array['ht'], 
+              $array['leococitos'], $array['bastonetes'], $array['segmentados'], 
+              $array['monocitos'], $array['linfocitos'], $array['plaquetas'], 
+              $array['glicose'], $array['idProntuario']);
       if($stmt->execute()){
          $stmt->close();
          $con->close();

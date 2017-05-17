@@ -42,7 +42,7 @@ class recemNascido extends Pagina{
       ?>
 <div class="container">
    <h3>2.3 - Exames inespecíficos</h3>  
-      <form method="get" action="">
+   <form method="post" action="/controll/exameHemograma/inserirExameHemograma.php">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <div class="row">
             <div class="col-xs-12 form-group">
