@@ -30,6 +30,7 @@ class entrevistaMae extends Pagina{
          <div class="col-sm-6 form-group">
             <label>Com que frequência você utilizava bebidas alcoólicas por semana?</label>
             <select name="freqAlcool" class="col-sm-6 form-control">
+               <option></option>
                <option>1</option>
                <option>2</option>
                <option>3</option>
@@ -45,6 +46,7 @@ class entrevistaMae extends Pagina{
          <div class="col-sm-6 form-group">
             <label>Quantas doses ou drinks você costumava tomar nesses dias?</label>
             <select name="dosesDrinks" class="col-sm-6 form-control">
+               <option></option>
                <option>1</option>
                <option>2</option>
                <option>3 ou mais</option>
@@ -54,6 +56,7 @@ class entrevistaMae extends Pagina{
          <div class="col-sm-6 form-group">
             <label>Com que frequência tomava mais que três doses ou drinks na mesma ocasião?</label>
             <select name="freqDrinks" class="col-sm-6 form-control">
+               <option></option>
                <option>Nunca</option>
                <option>Mensalmente ou menos</option>
                <option>Mensalmente</option>

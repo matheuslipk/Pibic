@@ -44,8 +44,8 @@ class entrevistaMae extends Pagina{
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label>Relizou pré-natal?</label>
-            <label><input type="radio" value="0" name="primGestacao">Não</label>
-            <label><input type="radio" value="1" name="primGestacao">Sim (continuar)</label>
+            <label><input type="radio" value="0" name="preNatal">Não</label>
+            <label><input type="radio" value="1" name="preNatal">Sim (continuar)</label>
          </div>         
       </div>
       <div class="row">
@@ -99,7 +99,7 @@ class entrevistaMae extends Pagina{
          </div> 
          <div class="col-sm-6 form-group">  
             <label>Idade gestacional no momento da 1ª consulta</label>
-            <input type="number" class="form-control" name="idadeGest" placeholder="Em semanas">
+            <input type="number" class="form-control" name="idadeGest1" placeholder="Em semanas">
          </div> 
       </div>
       
@@ -114,7 +114,7 @@ class entrevistaMae extends Pagina{
          </div> 
          <div class="col-sm-4 form-group">  
             <label>Altura</label>
-            <input class="form-control" name="idadeGest" placeholder="Em metros">
+            <input class="form-control" name="altura" placeholder="Em metros">
          </div> 
       </div>
       

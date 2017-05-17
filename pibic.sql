@@ -23,7 +23,8 @@ CREATE TABLE `antecedentes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `antecedentes` VALUES
-(1, 1, '', 1, '', 1, 1, '', 1, NULL, 0, NULL);
+(1, 1, '', 1, '', 1, 1, '', 1, NULL, 0, NULL),
+(12345, 1, '', 1, '', 1, 1, '', 1, 12345, 1, 12345);
 
 CREATE TABLE `dadossociodemograficos` (
   `idProntuario` int(11) NOT NULL,
@@ -39,7 +40,8 @@ CREATE TABLE `dadossociodemograficos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `dadossociodemograficos` VALUES
-(1, '0', '2017-05-05', '', 'Sem escolaridade', 'Solteira', 'CEO da maior empresa do mundo', 10, 50000, 1);
+(1, '0', '2017-05-05', '', 'Sem escolaridade', 'Solteira', 'CEO da maior empresa do mundo', 10, 50000, 1),
+(12345, 'nome2', '2017-05-13', 'racaa2', 'Sem escolaridade', 'Solteira', 'ocu2', 74, 12345678, 12345);
 
 CREATE TABLE `doencapreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -57,7 +59,8 @@ CREATE TABLE `doencapreexist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 INSERT INTO `doencapreexist` VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '');
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ''),
+(12345, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'outras');
 
 CREATE TABLE `dstpreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -71,7 +74,8 @@ CREATE TABLE `dstpreexist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 INSERT INTO `dstpreexist` VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12345, 0, 0, 0, 0, 0, 0, 'outras dsts');
 
 CREATE TABLE `durantegestacao` (
   `idProntuario` int(11) NOT NULL,
@@ -91,6 +95,9 @@ CREATE TABLE `durantegestacao` (
   `manchaVermelha` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `durantegestacao` VALUES
+(12345, 0, '', 0, '', 0, '1Âº trimestre', 0, NULL, 0, NULL, 0, '', NULL, 1);
+
 CREATE TABLE `endereco` (
   `idProntuario` int(11) NOT NULL,
   `uf` char(2) NOT NULL,
@@ -102,7 +109,8 @@ CREATE TABLE `endereco` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `endereco` VALUES
-(1, 'PI', 2200053, '', 0, '', '+5586994012914');
+(1, 'PI', 2200053, '', 0, '', '+5586994012914'),
+(12345, 'AC', 1200013, 'log', 56, 'b', 't');
 
 CREATE TABLE `estado` (
   `id` int(11) NOT NULL,
@@ -158,7 +166,8 @@ CREATE TABLE `examefisico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `examefisico` VALUES
-(1, 70, 60, 50, 40, 30, 20, 10, 1, 'Aparelho digestivo', 'DescriÃ§Ã£o da malformaÃ§Ã£o', 1, 'ConvulsÃµes');
+(1, 70, 60, 50, 40, 30, 20, 10, 1, 'Aparelho digestivo', 'DescriÃ§Ã£o da malformaÃ§Ã£o', 1, 'ConvulsÃµes'),
+(12345, 1, 2, 3, 4, 5, 6, 7, 1, 'Aparelho circulatÃ³rio', 'desc', 0, 'ConvulsÃµes');
 
 CREATE TABLE `examehemograma` (
   `idProntuario` int(11) NOT NULL,
@@ -174,6 +183,9 @@ CREATE TABLE `examehemograma` (
   `plaquetas` int(11) DEFAULT NULL,
   `glicose` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `examehemograma` VALUES
+(12345, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 CREATE TABLE `exameimagem` (
   `idProntuario` int(11) NOT NULL,
@@ -196,7 +208,8 @@ CREATE TABLE `exameimagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `exameimagem` VALUES
-(1, 1, '', 1, '', 0, '', 0, '', 1, '', 0, 1, 'esp', 0, 1, 'cificaÃ§Ã£o');
+(1, 1, '', 1, '', 0, '', 0, '', 1, '', 0, 1, 'esp', 0, 1, 'cificaÃ§Ã£o'),
+(12345, 1, '', 1, '', 1, 'Atrofia cerebral', 1, '', 0, '', 1, 1, '', 1, 0, '');
 
 CREATE TABLE `examepuncaoliquorica` (
   `idProntuario` int(11) NOT NULL,
@@ -214,7 +227,8 @@ CREATE TABLE `examepuncaoliquorica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `examepuncaoliquorica` VALUES
-(1, 1, '2017-05-16', 'LÃ­mpido', 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 1, '2017-05-16', 'LÃ­mpido', 0, 0, 0, 0, 0, 0, 0, 0),
+(12345, 1, '0000-00-00', 'LÃ­mpido', 1, 2, 3, 4, 5, 6, 8, 9);
 
 CREATE TABLE `histobstetrico` (
   `idProntuario` int(11) NOT NULL,
@@ -229,11 +243,30 @@ CREATE TABLE `histobstetrico` (
   `dataNascimento` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `histobstetrico` VALUES
+(12345, 0, 0, 0, 0, NULL, 0, NULL, 'desc', NULL);
+
 CREATE TABLE `municipio` (
   `codigo` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `uf` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `prenatal` (
+  `idProntuario` int(11) NOT NULL,
+  `preNatal` int(11) DEFAULT NULL,
+  `unidadeSaude` int(11) DEFAULT NULL,
+  `ufPrenatal` varchar(50) DEFAULT NULL,
+  `municipioPrenatal` int(11) DEFAULT NULL,
+  `numConsultas1` int(11) DEFAULT NULL,
+  `numConsultas2` int(11) DEFAULT NULL,
+  `numConsultas3` int(11) DEFAULT NULL,
+  `dataConsultas1` int(11) DEFAULT NULL,
+  `idadeGest1` int(11) DEFAULT NULL,
+  `pesoIniGestacao` int(11) DEFAULT NULL,
+  `pesoFimGestacao` int(11) DEFAULT NULL,
+  `altura` decimal(5,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `prontuario` (
   `idProntuario` int(11) NOT NULL,
@@ -242,7 +275,8 @@ CREATE TABLE `prontuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `prontuario` VALUES
-(1, 100, '2017-05-06 14:42:17');
+(1, 100, '2017-05-06 14:42:17'),
+(12345, 100, '2017-05-17 08:49:12');
 
 CREATE TABLE `recemnascido` (
   `idProntuario` int(11) NOT NULL,
@@ -260,7 +294,8 @@ CREATE TABLE `recemnascido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `recemnascido` VALUES
-(1, '2017-05-04', 'Masculino', 50, 0, 'PÃ³s-termo', 0, '1Âº Gemelar', 'Normal (Vaginal)', 0, 'AnÃ³xico', 'Outro');
+(1, '2017-05-04', 'Masculino', 50, 0, 'PÃ³s-termo', 0, '1Âº Gemelar', 'Normal (Vaginal)', 0, 'AnÃ³xico', 'Outro'),
+(12345, '2017-05-01', 'Masculino', 1, 5, 'PrÃ©-termo', 1, '1Âº Gemelar', 'CesÃ¡rio', 1, 'AnÃ³xico', '');
 
 CREATE TABLE `servicosaude` (
   `idProntuario` int(11) NOT NULL,
@@ -271,7 +306,8 @@ CREATE TABLE `servicosaude` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `servicosaude` VALUES
-(1, 5, 'ident', 2202208, 'responsÃ¡vel');
+(1, 5, 'ident', 2202208, 'responsÃ¡vel'),
+(12345, 1, 'ServiÃ§o', 2202208, '');
 
 CREATE TABLE `tipohospital` (
   `idTipoHospital` int(11) NOT NULL,
@@ -287,13 +323,13 @@ INSERT INTO `tipohospital` VALUES
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
-  `nick` varchar(20) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `senha` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nick` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `nome` varchar(50) COLLATE utf8_bin NOT NULL,
+  `senha` varchar(40) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
 
 INSERT INTO `usuario` VALUES
-(100, 'matheuslipk', 'Matheus AraÃºjo de Alcantara', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+(100, 'matheuslipk', 'Matheus AraÃºjo de AlcÃ¢ntara', '7c4a8d09ca3762af61e59520943dc26494f8941b');
 
 
 ALTER TABLE `antecedentes`
@@ -342,6 +378,9 @@ ALTER TABLE `municipio`
   ADD PRIMARY KEY (`codigo`),
   ADD KEY `uf` (`uf`);
 
+ALTER TABLE `prenatal`
+  ADD PRIMARY KEY (`idProntuario`);
+
 ALTER TABLE `prontuario`
   ADD PRIMARY KEY (`idProntuario`),
   ADD KEY `usuario` (`usuario`);
@@ -380,6 +419,9 @@ ALTER TABLE `dadossociodemograficos`
 ALTER TABLE `doencapreexist`
   ADD CONSTRAINT `doencapreexist_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
+ALTER TABLE `durantegestacao`
+  ADD CONSTRAINT `durantegestacao_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`codigo`),
   ADD CONSTRAINT `endereco_ibfk_4` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
@@ -402,6 +444,9 @@ ALTER TABLE `histobstetrico`
 
 ALTER TABLE `municipio`
   ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
+
+ALTER TABLE `prenatal`
+  ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 ALTER TABLE `prontuario`
   ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idUsuario`);
