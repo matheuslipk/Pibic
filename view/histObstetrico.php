@@ -72,20 +72,20 @@ class entrevistaMae extends Pagina{
    
    <h4>3.4 - Durante a gestação</h4>
    
-   <form>
+   <form method="post" action="/controll/duranteGestacao/inserirDuranteGestacao.php">
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label>Teve contato com pesticidas?</label>
-            <label><input type="radio" value="0" name="contatoPesticida">Não</label>
-            <label><input type="radio" value="1" name="contatoPesticida">Sim</label>
+            <label><input required type="radio" value="0" name="contatoPesticida">Não</label>
+            <label><input required type="radio" value="1" name="contatoPesticida">Sim</label>
             <input name="descPesticidas" class="form-control" placeholder="Se sim, especifique">
          </div> 
          
          <div class="col-sm-6 form-group">
             <label>Teve contato com agrotóxicos?</label>
-            <label><input type="radio" value="0" name="contatoAgrotoxico">Não</label>
-            <label><input type="radio" value="1" name="contatoAgrotoxico">Sim</label>
+            <label><input required type="radio" value="0" name="contatoAgrotoxico">Não</label>
+            <label><input required type="radio" value="1" name="contatoAgrotoxico">Sim</label>
             <input name="descAgrotoxicos" class="form-control" placeholder="Se sim, especifique">
          </div> 
       </div>
@@ -93,8 +93,8 @@ class entrevistaMae extends Pagina{
       <div class="row">
          <div class="col-sm-6 form-group">
             <label>Realizou algum exame de raio-X?</label>
-            <label><input type="radio" value="0" name="exameRX">Não</label>
-            <label><input type="radio" value="1" name="exameRX">Sim</label>
+            <label><input required type="radio" value="0" name="exameRX">Não</label>
+            <label><input required type="radio" value="1" name="exameRX">Sim</label>
             <select name="periodoExameRX" class="form-control">
                <option>1º trimestre</option>
                <option>2º trimestre</option>
@@ -104,8 +104,8 @@ class entrevistaMae extends Pagina{
          
          <div class="col-sm-6 form-group">
             <label>Fez uso de ácido fólico?</label>
-            <label><input type="radio" value="0" name="usoAcidoFolico">Não</label>
-            <label><input type="radio" value="1" name="usoAcidoFolico">Sim</label>
+            <label><input required type="radio" value="0" name="usoAcidoFolico">Não</label>
+            <label><input required type="radio" value="1" name="usoAcidoFolico">Sim</label>
             <label>Se sim, qual a data de inicio do tratamento?</label>
             <input type="date" name="dataUsoAcidoFolico" class="form-control">
          </div> 
@@ -114,16 +114,16 @@ class entrevistaMae extends Pagina{
       <div class="row">         
          <div class="col-sm-6 form-group">
             <label>Fez uso de ferro?</label>
-            <label><input type="radio" value="0" name="usoFerro">Não</label>
-            <label><input type="radio" value="1" name="usoFerro">Sim</label>
+            <label><input required type="radio" value="0" name="usoFerro">Não</label>
+            <label><input required type="radio" value="1" name="usoFerro">Sim</label>
             <label>Se sim, qual a data de inicio do tratamento?</label>
             <input type="date" name="dataUsoFerro" class="form-control">
          </div> 
          
          <div class="col-sm-6 form-group">
             <label>Outros medicamentos?</label>
-            <label><input type="radio" value="0" name="usoOutrosMed">Não</label>
-            <label><input type="radio" value="1" name="usoOutrosMed">Sim</label>
+            <label><input required type="radio" value="0" name="usoOutrosMed">Não</label>
+            <label><input required type="radio" value="1" name="usoOutrosMed">Sim</label>
             <input name="descUsoOutrosMed" class="form-control" placeholder="Especifique os outros medicamentos">
             <label>Data de início do tratamento</label>
             <input type="date" name="dataIniTratamento" class="form-control">
@@ -133,8 +133,8 @@ class entrevistaMae extends Pagina{
       <div class="row">         
          <div class="col-sm-6 form-group">
             <label>Você teve manchas vermelhas no corpo durante a gestação?</label>
-            <label><input type="radio" value="0" name="manchaVermelha">Não</label>
-            <label><input type="radio" value="1" name="manchaVermelha">Sim</label>
+            <label><input required type="radio" value="0" name="manchaVermelha">Não</label>
+            <label><input required type="radio" value="1" name="manchaVermelha">Sim</label>
             <label>Se sim, preencher a tabela abaixo</label>
          </div> 
          

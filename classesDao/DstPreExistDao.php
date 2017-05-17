@@ -6,7 +6,6 @@ class DstPreExistDao {
       $con = ConexaoDao::getConecao();
       $query = "INSERT INTO dstpreexist VALUES (?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      var_dump($array);
       $stmt->bind_param("iiiiiiis", $array['idProntuario'], $array['hiv'], 
               $array['sifilis'], $array['gonorreia'], $array['clamidia'], 
               $array['hepatite'], $array['herpes'], $array['outrasDsts']);

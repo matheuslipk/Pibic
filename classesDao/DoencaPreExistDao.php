@@ -6,7 +6,6 @@ class DoencaPreExistDao {
       $con = ConexaoDao::getConecao();
       $query = "INSERT INTO doencapreexist VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      var_dump($array);
       $stmt->bind_param("iiiiiiiiiiis", $array['idProntuario'], $array['diabetes'], 
               $array['outrasMetabolicas'], $array['hiperArterial'], $array['cardiopatia'], 
               $array['doencaRenal'], $array['pneumopatia'], $array['hemoglobinopatia'], 
