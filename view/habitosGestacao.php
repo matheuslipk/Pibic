@@ -70,7 +70,7 @@ class entrevistaMae extends Pagina{
    </form>
    
    <h4>Tabagismo</h4>
-   <form>
+   <form method="post" action="/controll/usoTabaco/inserirUsoTabaco.php">
       <div class="row">
       <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">

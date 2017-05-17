@@ -17,13 +17,13 @@ function inserirUsoAlcool(){
       $result = $UsoAlcoolDao->updateUsoAlcool($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/histObstetrico.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $UsoAlcoolDao->inserirUsoAlcool($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/histObstetrico.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
       }
    }
    
