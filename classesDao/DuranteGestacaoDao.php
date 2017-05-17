@@ -4,9 +4,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class DuranteGestacaoDao {
    public function inserirDuranteGestacao($array){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO durantegestacao VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO durantegestacao VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiisisisisissi", $array['idProntuario'], $array['contatoPesticida'], 
+      $stmt->bind_param("iisisisisisissi", $array['idProntuario'], $array['contatoPesticida'], $array['descPesticidas'],  
               $array['contatoAgrotoxico'], $array['descAgrotoxicos'], $array['exameRX'], 
               $array['periodoExameRX'], $array['usoAcidoFolico'], $array['dataUsoAcidoFolico'], 
               $array['usoFerro'], $array['dataUsoFerro'], $array['usoOutrosMed'], 
@@ -41,13 +41,13 @@ class DuranteGestacaoDao {
    
    public function updateDuranteGestacao($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE durantegestacao SET contatoPesticida=?, contatoAgrotoxico=?, "
+      $query = "UPDATE durantegestacao SET contatoPesticida=?, descPesticidas=?, contatoAgrotoxico=?, "
               . "descAgrotoxicos=?, exameRX=?, periodoExameRX=?, usoAcidoFolico=?, "
               . "dataUsoAcidoFolico=?, usoFerro=?, dataUsoFerro=?, usoOutrosMed=?, "
               . "descUsoOutrosMed=?, dataIniTratamento=?, manchaVermelha=? "
               . " WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iisisisisissii", $array['contatoPesticida'], 
+      $stmt->bind_param("isisisisisissii", $array['contatoPesticida'], $array['descPesticidas'], 
               $array['contatoAgrotoxico'], $array['descAgrotoxicos'], $array['exameRX'], 
               $array['periodoExameRX'], $array['usoAcidoFolico'], $array['dataUsoAcidoFolico'], 
               $array['usoFerro'], $array['dataUsoFerro'], $array['usoOutrosMed'], 

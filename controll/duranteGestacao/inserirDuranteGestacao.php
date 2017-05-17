@@ -5,6 +5,7 @@ function inserirDuranteGestacao(){
    
    $array['idProntuario'] = $_POST['prontuario'];
    $array['contatoPesticida'] = $_POST['contatoPesticida'];
+   $array['descPesticidas'] = $_POST['descPesticidas'];
    $array['contatoAgrotoxico'] = $_POST['contatoAgrotoxico'];
    $array['descAgrotoxicos'] = $_POST['descAgrotoxicos'];
    $array['exameRX'] = $_POST['exameRX'];
