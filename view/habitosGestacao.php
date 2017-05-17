@@ -19,7 +19,7 @@ class entrevistaMae extends Pagina{
       ?>
 <div class="container">   
    <h4>3.5 - Hábitos durante a gestação - Álcool</h4>
-   <form>
+   <form method="post" action="/controll/usoAlcool/inserirUsoAlcool.php">
       <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
       <div class="row">
          <div class="col-sm-6 form-group">
