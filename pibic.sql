@@ -166,7 +166,7 @@ CREATE TABLE `examefisico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `examefisico` VALUES
-(1, 70, 60, 50, 40, 30, 20, 10, 1, 'Aparelho digestivo', 'DescriÃ§Ã£o da malformaÃ§Ã£o', 1, 'ConvulsÃµes'),
+(1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, ''),
 (12345, 1, 2, 3, 4, 5, 6, 7, 1, 'Aparelho circulatÃ³rio', 'desc', 0, 'ConvulsÃµes');
 
 CREATE TABLE `examehemograma` (
@@ -294,7 +294,7 @@ CREATE TABLE `recemnascido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `recemnascido` VALUES
-(1, '2017-05-04', 'Masculino', 50, 0, 'PÃ³s-termo', 0, '1Âº Gemelar', 'Normal (Vaginal)', 0, 'AnÃ³xico', 'Outro'),
+(1, '2017-05-04', 'Masculino', 50, 0, 'Pré-termo', 0, '1º Gemelar', 'Normal (Vaginal)', 0, 'Anóxico', 'Outro'),
 (12345, '2017-05-01', 'Masculino', 1, 5, 'PrÃ©-termo', 1, '1Âº Gemelar', 'CesÃ¡rio', 1, 'AnÃ³xico', '');
 
 CREATE TABLE `servicosaude` (
@@ -320,6 +320,28 @@ INSERT INTO `tipohospital` VALUES
 (3, 'Hospital particular'),
 (4, 'DomicÃ­lio'),
 (5, 'Outro');
+
+CREATE TABLE `usoalcool` (
+  `idProntuario` int(11) NOT NULL,
+  `usoAlcool` int(11) NOT NULL,
+  `freqAlcool` varchar(50) DEFAULT NULL,
+  `dosesDrinks` varchar(20) NOT NULL,
+  `freqDrinks` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `usoalcool` VALUES
+(1, 0, NULL, '', NULL);
+
+CREATE TABLE `usotabaco` (
+  `idProntuario` int(11) NOT NULL,
+  `cigarro` varchar(50) DEFAULT NULL,
+  `tempoFumante` int(11) DEFAULT NULL,
+  `tempoExFumante` int(11) DEFAULT NULL,
+  `escalaTempo` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `usotabaco` VALUES
+(1, 'Fumei de 10 a 20 cigarros por dia', 2, 1, 'semana');
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
@@ -396,13 +418,19 @@ ALTER TABLE `servicosaude`
 ALTER TABLE `tipohospital`
   ADD PRIMARY KEY (`idTipoHospital`);
 
+ALTER TABLE `usoalcool`
+  ADD PRIMARY KEY (`idProntuario`);
+
+ALTER TABLE `usotabaco`
+  ADD PRIMARY KEY (`idProntuario`);
+
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `nick` (`nick`);
 
 
 ALTER TABLE `estado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 ALTER TABLE `tipohospital`
   MODIFY `idTipoHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 ALTER TABLE `usuario`
@@ -425,7 +453,7 @@ ALTER TABLE `durantegestacao`
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`codigo`),
   ADD CONSTRAINT `endereco_ibfk_4` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
-  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
+  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
 
 ALTER TABLE `examefisico`
   ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
@@ -443,7 +471,7 @@ ALTER TABLE `histobstetrico`
   ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 ALTER TABLE `municipio`
-  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
+  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
 
 ALTER TABLE `prenatal`
   ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
@@ -457,6 +485,9 @@ ALTER TABLE `recemnascido`
 ALTER TABLE `servicosaude`
   ADD CONSTRAINT `servicosaude_ibfk_1` FOREIGN KEY (`idTipoHospital`) REFERENCES `tipohospital` (`idTipoHospital`),
   ADD CONSTRAINT `servicosaude_ibfk_2` FOREIGN KEY (`municipioOcorrencia`) REFERENCES `municipio` (`codigo`);
+
+ALTER TABLE `usoalcool`
+  ADD CONSTRAINT `usoalcool_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
