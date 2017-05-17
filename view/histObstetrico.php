@@ -19,13 +19,13 @@ class entrevistaMae extends Pagina{
       ?>
 <div class="container">   
    <h4>3.3 - Histórico obstétrico/ginecológico</h4>
-   <form>
+   <form method="post" action="/controll/histObstetrico/inserirHistObstetrico.php">
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label>Primeira gestação?</label>
-            <label><input type="radio" value="0" name="primGestacao">Não</label>
-            <label><input type="radio" value="1" name="primGestacao">Sim (pular para dados da gestação)</label>
+            <label><input required type="radio" value="0" name="primGestacao">Não</label>
+            <label><input required type="radio" value="1" name="primGestacao">Sim (pular para dados da gestação)</label>
          </div>
          
       </div>

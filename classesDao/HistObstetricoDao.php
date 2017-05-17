@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class HistObstetricoDao {
    public function inserirHistObstetrico($array){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO histObstetrico VALUES (?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO histobstetrico VALUES (?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
       $stmt->bind_param("iiiiiiiiss", $array['idProntuario'], $array['primGestacao'], 
               $array['quantGravidez'], $array['quantVivos'], $array['quantMortos'], 
@@ -23,7 +23,7 @@ class HistObstetricoDao {
    
    public function getHistObstetricoByProntuario($prontuario){
       $con = ConexaoDao::getConecao();
-      $query = "SELECT * FROM histObstetrico WHERE idProntuario=?";
+      $query = "SELECT * FROM histobstetrico WHERE idProntuario=?";
       $stmt = $con->prepare($query);
       $stmt->bind_param("i", $prontuario);
       if($stmt->execute()){
@@ -40,11 +40,11 @@ class HistObstetricoDao {
    
    public function updateHistObstetrico($array){      
       $con = ConexaoDao::getConecao();
-      $query = "UPDATE histObstetrico SET primGestacao=?, quantGravidez=?, "
+      $query = "UPDATE histobstetrico SET primGestacao=?, quantGravidez=?, "
               . "quantVivos=?, quantMortos=?, teveAborto=?, quantAbortos=?, "
               . "malformacao=?, descMalformacao=?, dataNascimento=? WHERE idProntuario=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("issssssidi", $array['primGestacao'], 
+      $stmt->bind_param("iiiiiiissi", $array['primGestacao'], 
               $array['quantGravidez'], $array['quantVivos'], $array['quantMortos'], 
               $array['teveAborto'], $array['quantAbortos'], $array['malformacao'],
               $array['descMalformacao'], $array['dataNascimento'], $array['idProntuario']);
