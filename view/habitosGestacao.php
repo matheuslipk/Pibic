@@ -112,76 +112,92 @@ class entrevistaMae extends Pagina{
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label><u>Maconha:</u></label>
-            <label><input required type="radio" name="usoMaconha">Nunca</label>
-            <label><input type="radio" name="usoMaconha">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoMaconha">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoMaconha">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoMaconha">Todos os dias</label>
+            <select name="usoMaconha" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
          <div class="col-sm-6 form-group">
             <label><u>Cocaína cheirada:</u></label>
-            <label><input required type="radio" name="usoCocaina">Nunca</label>
-            <label><input type="radio" name="usoCocaina">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoCocaina">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoCocaina">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoCocaina">Todos os dias</label>
+            <select name="usoCocaina" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
       </div>
       
       <div class="row">
          <div class="col-sm-6 form-group">
             <label><u>Qualquer droga injetável:</u></label>
-            <label><input required type="radio" name="usoDrogaInjetavel">Nunca</label>
-            <label><input type="radio" name="usoDrogaInjetavel">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoDrogaInjetavel">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoDrogaInjetavel">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoDrogaInjetavel">Todos os dias</label>
+            <select name="usoDrogaInjetavel" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
          <div class="col-sm-6 form-group">
             <label><u>Crack ou merla:</u></label>
-            <label><input required type="radio" name="usoCrack">Nunca</label>
-            <label><input type="radio" name="usoCrack">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoCrack">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoCrack">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoCrack">Todos os dias</label>
+            <select name="usoCrack" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
       </div>
       
       <div class="row">
          <div class="col-sm-6 form-group">
             <label><u>Lança perfumes, loló, éter, solventes, esmalte, tinta, clorofórmio:</u></label>
-            <label><input required type="radio" name="usoLolo">Nunca</label>
-            <label><input type="radio" name="usoLolo">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoLolo">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoLolo">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoLolo">Todos os dias</label>
+            <select name="usoLolo" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
          <div class="col-sm-6 form-group">
             <label><u>LSD</u></label>
-            <label><input required type="radio" name="usoLSD">Nunca</label>
-            <label><input type="radio" name="usoLSD">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoLSD">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoLSD">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoLSD">Todos os dias</label>
+            <select name="usoLSD" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
       </div>
       
       <div class="row">
          <div class="col-sm-6 form-group">
             <label><u>Ecstasy:</u></label>
-            <label><input required type="radio" name="usoEcstasy">Nunca</label>
-            <label><input type="radio" name="usoEcstasy">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoEcstasy">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoEcstasy">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoEcstasy">Todos os dias</label>
+            <select name="usoEcstasy" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
          <div class="col-sm-6 form-group">
             <label><u>Anfetamina ou remédios para emagrecer</u></label>
-            <label><input required type="radio" name="usoAnfetamina">Nunca</label>
-            <label><input type="radio" name="usoAnfetamina">Nenhuma vez no último ano antes de ficar grávida</label>
-            <label><input type="radio" name="usoAnfetamina">Uma vez por mês pelo menos</label>
-            <label><input type="radio" name="usoAnfetamina">Mais ou menos uma vez por semana</label>
-            <label><input type="radio" name="usoAnfetamina">Todos os dias</label>
+            <select name="usoAnfetamina" class="form-control">
+               <option>Nunca</option>
+               <option>Nenhuma vez no último ano antes de ficar grávida</option>
+               <option>Uma vez por mês pelo menos</option>
+               <option>Mais ou menos uma vez por semana</option>
+               <option>Todos os dias</option>               
+            </select>
          </div>         
       </div>
       
