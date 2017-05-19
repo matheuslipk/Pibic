@@ -107,7 +107,7 @@ class entrevistaMae extends Pagina{
    <h4>Drogas ilícitas - Agora nós vamos falar sobre o uso de substâncias estimulantes 
       ou calmantes. Alguma vez você usou:</h4>
    
-   <form>
+   <form method="post" action="/controll/drogas/inserirDrogas.php">
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">

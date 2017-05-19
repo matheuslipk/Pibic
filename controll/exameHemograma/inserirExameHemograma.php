@@ -29,7 +29,7 @@ function inserirExameHemograma(){
       $result = $ExameHemogramaDao->inserirExameHemograma($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/examesInespecificos.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/2.3-examesInespecificos.php?prontuario={$array['idProntuario']}");
       }
    }
    

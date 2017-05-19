@@ -81,7 +81,7 @@ class Index extends Pagina{
                </div>
 
                <div class="form-group col-sm-4">
-                  <label>Responsável</label>
+                  <label>RESP</label>
                   <input name="resp" type="text" class="form-control"  <?php echo "value={$servico['resp']}"; ?>>
                </div>
             </div>

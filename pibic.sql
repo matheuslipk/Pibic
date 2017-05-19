@@ -22,10 +22,6 @@ CREATE TABLE `antecedentes` (
   `descDstPreExist` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `antecedentes` VALUES
-(1, 1, '', 1, '', 1, 1, '', 1, NULL, 0, NULL),
-(12345, 1, '', 1, '', 1, 1, '', 1, 12345, 1, 12345);
-
 CREATE TABLE `dadossociodemograficos` (
   `idProntuario` int(11) NOT NULL,
   `nome` varchar(30) NOT NULL,
@@ -38,10 +34,6 @@ CREATE TABLE `dadossociodemograficos` (
   `rendaFamiliar` double NOT NULL,
   `enderecoAtual` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `dadossociodemograficos` VALUES
-(1, '0', '2017-05-05', '', 'Sem escolaridade', 'Solteira', 'CEO da maior empresa do mundo', 10, 50000, 1),
-(12345, 'nome2', '2017-05-13', 'racaa2', 'Sem escolaridade', 'Solteira', 'ocu2', 74, 12345678, 12345);
 
 CREATE TABLE `doencapreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -58,9 +50,17 @@ CREATE TABLE `doencapreexist` (
   `outros` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
-INSERT INTO `doencapreexist` VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ''),
-(12345, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'outras');
+CREATE TABLE `drogas` (
+  `idProntuario` int(11) NOT NULL,
+  `usoMaconha` varchar(50) DEFAULT NULL,
+  `usoCocaina` varchar(50) DEFAULT NULL,
+  `usoDrogaInjetavel` varchar(50) DEFAULT NULL,
+  `usoCrack` varchar(50) DEFAULT NULL,
+  `usoLolo` varchar(50) DEFAULT NULL,
+  `usoLSD` varchar(50) DEFAULT NULL,
+  `usoEcstasy` varchar(50) DEFAULT NULL,
+  `usoAnfetamina` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `dstpreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -72,10 +72,6 @@ CREATE TABLE `dstpreexist` (
   `herpes` int(11) DEFAULT NULL,
   `outrasDsts` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
-INSERT INTO `dstpreexist` VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12345, 0, 0, 0, 0, 0, 0, 'outras dsts');
 
 CREATE TABLE `durantegestacao` (
   `idProntuario` int(11) NOT NULL,
@@ -95,9 +91,6 @@ CREATE TABLE `durantegestacao` (
   `manchaVermelha` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `durantegestacao` VALUES
-(12345, 0, '', 0, '', 0, '1Âº trimestre', 0, NULL, 0, NULL, 0, '', NULL, 1);
-
 CREATE TABLE `endereco` (
   `idProntuario` int(11) NOT NULL,
   `uf` char(2) NOT NULL,
@@ -107,10 +100,6 @@ CREATE TABLE `endereco` (
   `bairro` varchar(30) NOT NULL,
   `telefone` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `endereco` VALUES
-(1, 'PI', 2200053, '', 0, '', '+5586994012914'),
-(12345, 'AC', 1200013, 'log', 56, 'b', 't');
 
 CREATE TABLE `estado` (
   `id` int(11) NOT NULL,
@@ -165,10 +154,6 @@ CREATE TABLE `examefisico` (
   `outrosAchadosClinicos` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `examefisico` VALUES
-(1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, ''),
-(12345, 1, 2, 3, 4, 5, 6, 7, 1, 'Aparelho circulatÃ³rio', 'desc', 0, 'ConvulsÃµes');
-
 CREATE TABLE `examehemograma` (
   `idProntuario` int(11) NOT NULL,
   `hemograma` tinyint(1) NOT NULL,
@@ -183,9 +168,6 @@ CREATE TABLE `examehemograma` (
   `plaquetas` int(11) DEFAULT NULL,
   `glicose` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `examehemograma` VALUES
-(12345, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 CREATE TABLE `exameimagem` (
   `idProntuario` int(11) NOT NULL,
@@ -207,10 +189,6 @@ CREATE TABLE `exameimagem` (
   `descAlterTesteOrelhinha` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `exameimagem` VALUES
-(1, 1, '', 1, '', 0, '', 0, '', 1, '', 0, 1, 'esp', 0, 1, 'cificaÃ§Ã£o'),
-(12345, 1, '', 1, '', 1, 'Atrofia cerebral', 1, '', 0, '', 1, 1, '', 1, 0, '');
-
 CREATE TABLE `examepuncaoliquorica` (
   `idProntuario` int(11) NOT NULL,
   `puncaoLiquorica` int(11) NOT NULL,
@@ -226,10 +204,6 @@ CREATE TABLE `examepuncaoliquorica` (
   `glicose` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `examepuncaoliquorica` VALUES
-(1, 1, '2017-05-16', 'LÃ­mpido', 0, 0, 0, 0, 0, 0, 0, 0),
-(12345, 1, '0000-00-00', 'LÃ­mpido', 1, 2, 3, 4, 5, 6, 8, 9);
-
 CREATE TABLE `histobstetrico` (
   `idProntuario` int(11) NOT NULL,
   `primGestacao` int(11) NOT NULL,
@@ -242,9 +216,6 @@ CREATE TABLE `histobstetrico` (
   `descMalformacao` varchar(50) DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `histobstetrico` VALUES
-(12345, 0, 0, 0, 0, NULL, 0, NULL, 'desc', NULL);
 
 CREATE TABLE `municipio` (
   `codigo` int(11) NOT NULL,
@@ -274,10 +245,6 @@ CREATE TABLE `prontuario` (
   `dataCriacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `prontuario` VALUES
-(1, 100, '2017-05-06 14:42:17'),
-(12345, 100, '2017-05-17 08:49:12');
-
 CREATE TABLE `recemnascido` (
   `idProntuario` int(11) NOT NULL,
   `dataParto` date NOT NULL,
@@ -293,10 +260,6 @@ CREATE TABLE `recemnascido` (
   `outroDano` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `recemnascido` VALUES
-(1, '2017-05-04', 'Masculino', 50, 0, 'Pré-termo', 0, '1º Gemelar', 'Normal (Vaginal)', 0, 'Anóxico', 'Outro'),
-(12345, '2017-05-01', 'Masculino', 1, 5, 'PrÃ©-termo', 1, '1Âº Gemelar', 'CesÃ¡rio', 1, 'AnÃ³xico', '');
-
 CREATE TABLE `servicosaude` (
   `idProntuario` int(11) NOT NULL,
   `idTipoHospital` int(11) NOT NULL,
@@ -304,10 +267,6 @@ CREATE TABLE `servicosaude` (
   `municipioOcorrencia` int(11) DEFAULT NULL,
   `resp` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `servicosaude` VALUES
-(1, 5, 'ident', 2202208, 'responsÃ¡vel'),
-(12345, 1, 'ServiÃ§o', 2202208, '');
 
 CREATE TABLE `tipohospital` (
   `idTipoHospital` int(11) NOT NULL,
@@ -329,9 +288,6 @@ CREATE TABLE `usoalcool` (
   `freqDrinks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `usoalcool` VALUES
-(1, 0, NULL, '', NULL);
-
 CREATE TABLE `usotabaco` (
   `idProntuario` int(11) NOT NULL,
   `cigarro` varchar(50) DEFAULT NULL,
@@ -339,9 +295,6 @@ CREATE TABLE `usotabaco` (
   `tempoExFumante` int(11) DEFAULT NULL,
   `escalaTempo` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `usotabaco` VALUES
-(1, 'Fumei de 10 a 20 cigarros por dia', 2, 1, 'semana');
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
@@ -364,6 +317,9 @@ ALTER TABLE `dadossociodemograficos`
   ADD KEY `enderecoAtual` (`enderecoAtual`);
 
 ALTER TABLE `doencapreexist`
+  ADD PRIMARY KEY (`idProntuario`);
+
+ALTER TABLE `drogas`
   ADD PRIMARY KEY (`idProntuario`);
 
 ALTER TABLE `dstpreexist`
@@ -430,64 +386,75 @@ ALTER TABLE `usuario`
 
 
 ALTER TABLE `estado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `tipohospital`
   MODIFY `idTipoHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 ALTER TABLE `usuario`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 ALTER TABLE `antecedentes`
-  ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`descDoencaPreExist`) REFERENCES `doencapreexist` (`idProntuario`),
-  ADD CONSTRAINT `antecedentes_ibfk_2` FOREIGN KEY (`descDstPreExist`) REFERENCES `dstpreexist` (`idProntuario`);
+  ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`descDoencaPreExist`) REFERENCES `doencapreexist` (`idProntuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `antecedentes_ibfk_2` FOREIGN KEY (`descDstPreExist`) REFERENCES `dstpreexist` (`idProntuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `antecedentes_ibfk_3` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `dadossociodemograficos`
-  ADD CONSTRAINT `dadossociodemograficos_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
+  ADD CONSTRAINT `dadossociodemograficos_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `dadossociodemograficos_ibfk_2` FOREIGN KEY (`enderecoAtual`) REFERENCES `endereco` (`idProntuario`);
 
 ALTER TABLE `doencapreexist`
-  ADD CONSTRAINT `doencapreexist_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `doencapreexist_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
+
+ALTER TABLE `drogas`
+  ADD CONSTRAINT `drogas_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
+
+ALTER TABLE `dstpreexist`
+  ADD CONSTRAINT `dstpreexist_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `durantegestacao`
-  ADD CONSTRAINT `durantegestacao_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `durantegestacao_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`codigo`),
-  ADD CONSTRAINT `endereco_ibfk_4` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
-  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
+  ADD CONSTRAINT `endereco_ibfk_4` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `endereco_ibfk_5` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
 
 ALTER TABLE `examefisico`
-  ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `examehemograma`
-  ADD CONSTRAINT `exameHemograma_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `exameHemograma_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `exameimagem`
-  ADD CONSTRAINT `exameImagem_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `exameImagem_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `examepuncaoliquorica`
-  ADD CONSTRAINT `examePuncaoLiquorica_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `examePuncaoLiquorica_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `histobstetrico`
-  ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `municipio`
-  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`);
+  ADD CONSTRAINT `municipio_ibfk_1` FOREIGN KEY (`uf`) REFERENCES `estado` (`Uf`);
 
 ALTER TABLE `prenatal`
-  ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `prontuario`
   ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idUsuario`);
 
 ALTER TABLE `recemnascido`
-  ADD CONSTRAINT `recemNascido_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `recemNascido_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `servicosaude`
   ADD CONSTRAINT `servicosaude_ibfk_1` FOREIGN KEY (`idTipoHospital`) REFERENCES `tipohospital` (`idTipoHospital`),
-  ADD CONSTRAINT `servicosaude_ibfk_2` FOREIGN KEY (`municipioOcorrencia`) REFERENCES `municipio` (`codigo`);
+  ADD CONSTRAINT `servicosaude_ibfk_2` FOREIGN KEY (`municipioOcorrencia`) REFERENCES `municipio` (`codigo`),
+  ADD CONSTRAINT `servicosaude_ibfk_3` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `usoalcool`
-  ADD CONSTRAINT `usoalcool_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`);
+  ADD CONSTRAINT `usoalcool_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
+
+ALTER TABLE `usotabaco`
+  ADD CONSTRAINT `usotabaco_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
