@@ -18,13 +18,13 @@ function inserirDrogas(){
       $result = $DrogasDao->updateDrogas($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/histObstetrico.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/prenatal.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $DrogasDao->inserirDrogas($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/histObstetrico.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/prenatal.php?prontuario={$array['idProntuario']}");
       }
    }
    

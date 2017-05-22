@@ -39,12 +39,12 @@ class entrevistaMae extends Pagina{
       ?>
 <div class="container">   
    <h2>4 - Pré-natal</h2>
-   <form>
+   <form method="post" action="/controll/prenatal/inserirPrenatal.php">
       <div class="row">
          <input style="display: none" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-sm-6 form-group">
             <label>Relizou pré-natal?</label>
-            <label><input type="radio" value="0" name="preNatal">Não</label>
+            <label><input required type="radio" value="0" name="preNatal">Não</label>
             <label><input type="radio" value="1" name="preNatal">Sim (continuar)</label>
          </div>         
       </div>

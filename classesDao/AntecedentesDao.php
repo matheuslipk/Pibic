@@ -6,7 +6,6 @@ class AntecedentesDao {
       $con = ConexaoDao::getConecao();
       $query = "INSERT INTO antecedentes VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      var_dump($array);
       $stmt->bind_param("iisisiisiiii", $array['idProntuario'], $array['grauParentesco'], 
               $array['descGrauParentesco'], $array['malFormacao'], $array['descMalFormacao'], 
               $array['parenteMicrocefalia'], $array['usoMedContinuo'], $array['descUsoMedContinuo'], 
