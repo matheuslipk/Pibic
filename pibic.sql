@@ -488,6 +488,38 @@ ALTER TABLE `usoalcool`
 ALTER TABLE `usotabaco`
   ADD CONSTRAINT `usotabaco_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
+CREATE TABLE `agenteetiologico` (
+  `idAgente` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `exameetiologico` (
+  `idProntuario` int(11) NOT NULL,
+  `idAgente` int(11) NOT NULL,
+  `amostra` int(11) DEFAULT NULL,
+  `dataColeta` date DEFAULT NULL,
+  `igm` int(11) DEFAULT NULL,
+  `igg` int(11) DEFAULT NULL,
+  `pcr` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `agenteetiologico`
+  ADD PRIMARY KEY (`idAgente`);
+
+ALTER TABLE `exameetiologico`
+  ADD PRIMARY KEY (`idProntuario`,`idAgente`),
+  ADD KEY `idAgente` (`idAgente`);
+
+
+ALTER TABLE `agenteetiologico`
+  MODIFY `idAgente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+ALTER TABLE `exameetiologico`
+  ADD CONSTRAINT `exameetiologico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
+  ADD CONSTRAINT `exameetiologico_ibfk_2` FOREIGN KEY (`idAgente`) REFERENCES `agenteetiologico` (`idAgente`);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
