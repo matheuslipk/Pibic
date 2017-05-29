@@ -1,36 +1,45 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/UsoAlcoolDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ExameEtiologicoDao.php';
 
-function inserirUsoAlcool(){
+function inserirExameEtiologico(){
    
    $array['idProntuario'] = $_POST['prontuario'];
-   $array['amostra'] = 0;
-   $array['data00'] = $_POST['data00'];
-   $array['data00'] = $_POST['igm00'];
-   $array['data00'] = $_POST['igg00'];
-   $array['data00'] = $_POST['pcr00'];
+   $array['idAgente'] = $_POST['idAgente'];
+   $array['data00'] = $_POST['data00'] ? $_POST['data00'] : NULL;
+   $array['igm00'] = $_POST['igm00'] ? $_POST['igm00'] : NULL;
+   $array['igg00'] = $_POST['igg00'] ? $_POST['igg00'] : NULL;
+   $array['pcr00'] = $_POST['pcr00'] ? $_POST['pcr00'] : NULL;
    
-   $UsoAlcoolDao = new UsoAlcoolDao();
+   $array['data01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
+   $array['igm01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
+   $array['igg01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
+   $array['pcr01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
    
-   if(isUsoAlcool($_POST['prontuario'])){
-      $result = $UsoAlcoolDao->updateUsoAlcool($array);
+   $array['data02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
+   $array['igm02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
+   $array['igg02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
+   $array['pcr02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
+   
+   $ExameEtiologicoDao = new ExameEtiologicoDao();
+   
+   if(isExameEtiologico($_POST['prontuario'], $_POST['idAgente'])){
+      $result = $ExameEtiologicoDao->updateExameEtiologico($array);
       echo $result;
       if($result === TRUE){
          header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
       }
    }else{
-      $result = $UsoAlcoolDao->inserirUsoAlcool($array);
+      $result = $ExameEtiologicoDao->inserirExameEtiologico($array);
       echo $result;
       if($result === TRUE){
          header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
       }
-   }
-   
+   }   
 }
 
-function isUsoAlcool($prontuario){
-   $exameDao = new UsoAlcoolDao();
-   $result = $exameDao->getUsoAlcoolByProntuario($prontuario);
+function isExameEtiologico($prontuario, $agente){
+   $exameDao = new ExameEtiologicoDao();
+   $result = $exameDao->getExameEtiologicoByProntuario($prontuario, $agente);
    if($result===FALSE){
       return FALSE;
    }elseif (count($result)>=1) {
@@ -38,4 +47,4 @@ function isUsoAlcool($prontuario){
    }
 }
 
-inserirUsoAlcool();
+inserirExameEtiologico();

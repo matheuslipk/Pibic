@@ -493,24 +493,43 @@ CREATE TABLE `agenteetiologico` (
   `nome` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Fazendo dump de dados para tabela `agenteetiologico`
+--
+
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(1, 'Rubéola');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(2, 'Citomegalovírus');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(3, 'Herpes vírus');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(4, 'Parvovírus');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(5, 'Toxoplasmose');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(6, 'Sífilis');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(7, 'HIV');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(8, 'Zika vírus');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(9, 'Chikungunya');
+INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(10, 'Dengue');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `exameetiologico`
+--
+
 CREATE TABLE `exameetiologico` (
   `idProntuario` int(11) NOT NULL,
   `idAgente` int(11) NOT NULL,
-  `amostra` int(11) DEFAULT NULL,
-  `dataColeta` date DEFAULT NULL,
+  `amostra` int(11) NOT NULL,
+  `data` date DEFAULT NULL,
   `igm` int(11) DEFAULT NULL,
   `igg` int(11) DEFAULT NULL,
   `pcr` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 ALTER TABLE `agenteetiologico`
   ADD PRIMARY KEY (`idAgente`);
 
 ALTER TABLE `exameetiologico`
-  ADD PRIMARY KEY (`idProntuario`,`idAgente`),
+  ADD PRIMARY KEY (`idProntuario`,`idAgente`,`amostra`),
   ADD KEY `idAgente` (`idAgente`);
-
 
 ALTER TABLE `agenteetiologico`
   MODIFY `idAgente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
