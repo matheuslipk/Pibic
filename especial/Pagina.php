@@ -140,9 +140,9 @@ class Pagina {
          echo "<li><a href='/view/2.3-examesInespecificos.php?prontuario={$prontuario}'>3</a></li>";
       }
       if($pag ===4){
-         echo "<li class='active'><a href='#'>4</a></li>";
+         echo "<li class='active'><a href='/view/examesEtiologicos.php?prontuario={$prontuario}'>4</a></li>";
       }else{
-         echo "<li><a href='#'>4</a></li>";
+         echo "<li><a href='/view/examesEtiologicos.php?prontuario={$prontuario}'>4</a></li>";
       }
       if($pag ===5){
          echo "<li class='active'><a href='/view/2.5-examesImagem.php?prontuario={$prontuario}''>5</a></li>";
