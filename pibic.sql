@@ -1,11 +1,22 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE `agenteetiologico` (
+  `idAgente` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `agenteetiologico` VALUES
+(1, 'Rubéola'),
+(2, 'Citomegalovírus'),
+(3, 'Herpes vírus'),
+(4, 'Parvovírus'),
+(5, 'Toxoplasmose'),
+(6, 'Sífilis'),
+(7, 'HIV'),
+(8, 'Zika vírus'),
+(9, 'Chikungunya'),
+(10, 'Dengue');
 
 CREATE TABLE `antecedentes` (
   `idProntuario` int(11) NOT NULL,
@@ -20,26 +31,20 @@ CREATE TABLE `antecedentes` (
   `descDoencaPreExist` int(11) DEFAULT NULL,
   `dst` int(11) NOT NULL,
   `descDstPreExist` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `antecedentes` VALUES
-(123, 1, 'asdvdf', 1, 'asdgv', 0, 0, 'asdgv', 1, 123, 0, 123);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `dadossociodemograficos` (
   `idProntuario` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL,
+  `nome` varchar(30) CHARACTER SET latin1 NOT NULL,
   `dataNascimento` date NOT NULL,
-  `racaCor` varchar(30) NOT NULL,
-  `escolaridade` varchar(30) NOT NULL,
-  `estadoCivil` varchar(30) NOT NULL,
-  `ocupacao` varchar(30) NOT NULL,
+  `racaCor` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `escolaridade` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `estadoCivil` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `ocupacao` varchar(30) CHARACTER SET latin1 NOT NULL,
   `pessoasNaCasa` int(11) NOT NULL,
   `rendaFamiliar` double NOT NULL,
   `enderecoAtual` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `dadossociodemograficos` VALUES
-(123, 'bhk', '2017-05-03', 'jyhbn', 'Sem escolaridade', 'Solteira', 'jgb', 0, 0, 123);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `doencapreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -53,23 +58,20 @@ CREATE TABLE `doencapreexist` (
   `cancer` int(11) DEFAULT NULL,
   `autoimune` int(11) DEFAULT NULL,
   `neuroleptica` int(11) DEFAULT NULL,
-  `outros` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
-INSERT INTO `doencapreexist` VALUES
-(123, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 'asdg');
+  `outros` varchar(100) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 CREATE TABLE `drogas` (
   `idProntuario` int(11) NOT NULL,
-  `usoMaconha` varchar(50) DEFAULT NULL,
-  `usoCocaina` varchar(50) DEFAULT NULL,
-  `usoDrogaInjetavel` varchar(50) DEFAULT NULL,
-  `usoCrack` varchar(50) DEFAULT NULL,
-  `usoLolo` varchar(50) DEFAULT NULL,
-  `usoLSD` varchar(50) DEFAULT NULL,
-  `usoEcstasy` varchar(50) DEFAULT NULL,
-  `usoAnfetamina` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `usoMaconha` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoCocaina` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoDrogaInjetavel` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoCrack` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoLolo` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoLSD` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoEcstasy` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `usoAnfetamina` varchar(50) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `dstpreexist` (
   `idProntuario` int(11) NOT NULL,
@@ -80,10 +82,7 @@ CREATE TABLE `dstpreexist` (
   `hepatite` int(11) DEFAULT NULL,
   `herpes` int(11) DEFAULT NULL,
   `outrasDsts` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
-INSERT INTO `dstpreexist` VALUES
-(123, 1, 0, 1, 0, 0, 0, 'asdg');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 CREATE TABLE `durantegestacao` (
   `idProntuario` int(11) NOT NULL,
@@ -101,23 +100,17 @@ CREATE TABLE `durantegestacao` (
   `descUsoOutrosMed` varchar(50) DEFAULT NULL,
   `dataIniTratamento` date DEFAULT NULL,
   `manchaVermelha` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `durantegestacao` VALUES
-(123, 0, '', 0, '', 0, '1º trimestre', 0, NULL, 0, NULL, 0, '', NULL, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `endereco` (
   `idProntuario` int(11) NOT NULL,
-  `uf` char(2) CHARACTER SET utf8 NOT NULL,
+  `uf` char(2) NOT NULL,
   `municipio` int(11) NOT NULL,
-  `logradouro` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `logradouro` varchar(50) NOT NULL,
   `numero` int(11) NOT NULL,
-  `bairro` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `telefone` varchar(30) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
-INSERT INTO `endereco` VALUES
-(123, 'AC', 1200013, '', 0, '', '');
+  `bairro` varchar(30) NOT NULL,
+  `telefone` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `estado` (
   `codigoUf` int(11) NOT NULL,
@@ -155,6 +148,16 @@ INSERT INTO `estado` VALUES
 (52, 'Goiás', 'GO', 5),
 (53, 'Distrito Federal', 'DF', 5);
 
+CREATE TABLE `exameetiologico` (
+  `idProntuario` int(11) NOT NULL,
+  `idAgente` int(11) NOT NULL,
+  `amostra` int(11) NOT NULL,
+  `data` date DEFAULT NULL,
+  `igm` int(11) DEFAULT NULL,
+  `igg` int(11) DEFAULT NULL,
+  `pcr` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `examefisico` (
   `idProntuario` int(11) NOT NULL,
   `peso` int(11) NOT NULL,
@@ -169,10 +172,7 @@ CREATE TABLE `examefisico` (
   `descMalformacao` varchar(80) DEFAULT NULL,
   `achadosClinicos` tinyint(1) NOT NULL,
   `outrosAchadosClinicos` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `examefisico` VALUES
-(123, 1, 2, 3, 4, 5, 6, 7, 0, NULL, NULL, 0, 'Convulsões');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `examehemograma` (
   `idProntuario` int(11) NOT NULL,
@@ -187,10 +187,7 @@ CREATE TABLE `examehemograma` (
   `linfocitos` int(11) DEFAULT NULL,
   `plaquetas` int(11) DEFAULT NULL,
   `glicose` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `examehemograma` VALUES
-(123, 1, '2017-05-04', 1, 1, 1, 1, 1, 1, NULL, 1, 12);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `exameimagem` (
   `idProntuario` int(11) NOT NULL,
@@ -210,10 +207,7 @@ CREATE TABLE `exameimagem` (
   `testeOrelhinha` int(11) DEFAULT NULL,
   `alterTesteOrelhinha` int(11) DEFAULT NULL,
   `descAlterTesteOrelhinha` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `exameimagem` VALUES
-(123, 0, 'Normal', 0, 'Isencefalia', 0, 'Atrofia cerebral', 0, '', 0, '', 0, 1, '', 0, 1, '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `examepuncaoliquorica` (
   `idProntuario` int(11) NOT NULL,
@@ -228,10 +222,7 @@ CREATE TABLE `examepuncaoliquorica` (
   `linfocitos` int(11) DEFAULT NULL,
   `cloreto` int(11) DEFAULT NULL,
   `glicose` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `examepuncaoliquorica` VALUES
-(123, 1, '2017-05-06', 'Límpido', 7, 6, 5, 4, 3, 25, 0, 50);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `histobstetrico` (
   `idProntuario` int(11) NOT NULL,
@@ -244,10 +235,7 @@ CREATE TABLE `histobstetrico` (
   `malformacao` int(11) DEFAULT NULL,
   `descMalformacao` varchar(50) DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `histobstetrico` VALUES
-(123, 0, 0, 0, 0, NULL, 0, NULL, '', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `municipio` (
   `codigo` int(11) NOT NULL,
@@ -264,7 +252,7 @@ CREATE TABLE `prenatal` (
   `numConsultas1` int(11) DEFAULT NULL,
   `numConsultas2` int(11) DEFAULT NULL,
   `numConsultas3` int(11) DEFAULT NULL,
-  `dataConsultas1` int(11) DEFAULT NULL,
+  `dataConsultas1` date DEFAULT NULL,
   `idadeGest1` int(11) DEFAULT NULL,
   `pesoIniGestacao` int(11) DEFAULT NULL,
   `pesoFimGestacao` int(11) DEFAULT NULL,
@@ -276,9 +264,6 @@ CREATE TABLE `prontuario` (
   `usuario` int(11) NOT NULL,
   `dataCriacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `prontuario` VALUES
-(123, 100, '2017-05-19 17:53:33');
 
 CREATE TABLE `recemnascido` (
   `idProntuario` int(11) NOT NULL,
@@ -293,10 +278,7 @@ CREATE TABLE `recemnascido` (
   `danoPerinatal` int(1) NOT NULL,
   `tipoDanoPerinatal` varchar(20) DEFAULT NULL,
   `outroDano` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `recemnascido` VALUES
-(123, '2017-05-06', 'Masculino', 6, 4, 'Pré-termo', 1, '1º Gemelar', 'Cesário', 1, 'Anóxico', 'ou');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `servicosaude` (
   `idProntuario` int(11) NOT NULL,
@@ -304,10 +286,7 @@ CREATE TABLE `servicosaude` (
   `identServico` varchar(200) NOT NULL,
   `municipioOcorrencia` int(11) DEFAULT NULL,
   `resp` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `servicosaude` VALUES
-(123, 1, '', 2200053, '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tipohospital` (
   `idTipoHospital` int(11) NOT NULL,
@@ -339,14 +318,18 @@ CREATE TABLE `usotabaco` (
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
-  `nick` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `nome` varchar(50) COLLATE utf8_bin NOT NULL,
-  `senha` varchar(40) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+  `nick` varchar(20) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `senha` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 INSERT INTO `usuario` VALUES
-(100, 'matheuslipk', 'Matheus AraÃºjo de AlcÃ¢ntara', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+(100, 'matheuslipk', 'Matheus Araújo de Alcântara', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+(1001, 'vitoria', 'Vitória', '7a7996b7852645393efb5736f759d88eaa771d24');
 
+
+ALTER TABLE `agenteetiologico`
+  ADD PRIMARY KEY (`idAgente`);
 
 ALTER TABLE `antecedentes`
   ADD PRIMARY KEY (`idProntuario`),
@@ -378,6 +361,10 @@ ALTER TABLE `estado`
   ADD PRIMARY KEY (`codigoUf`),
   ADD UNIQUE KEY `uf` (`uf`);
 
+ALTER TABLE `exameetiologico`
+  ADD PRIMARY KEY (`idProntuario`,`idAgente`,`amostra`),
+  ADD KEY `idAgente` (`idAgente`);
+
 ALTER TABLE `examefisico`
   ADD PRIMARY KEY (`idProntuario`);
 
@@ -397,7 +384,9 @@ ALTER TABLE `municipio`
   ADD PRIMARY KEY (`codigo`);
 
 ALTER TABLE `prenatal`
-  ADD PRIMARY KEY (`idProntuario`);
+  ADD PRIMARY KEY (`idProntuario`),
+  ADD KEY `ufPrenatal` (`ufPrenatal`),
+  ADD KEY `municipioPrenatal` (`municipioPrenatal`);
 
 ALTER TABLE `prontuario`
   ADD PRIMARY KEY (`idProntuario`),
@@ -424,6 +413,8 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`);
 
 
+ALTER TABLE `agenteetiologico`
+  MODIFY `idAgente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `tipohospital`
   MODIFY `idTipoHospital` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
@@ -453,6 +444,10 @@ ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`uf`) REFERENCES `estado` (`uf`),
   ADD CONSTRAINT `endereco_ibfk_3` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`codigo`);
 
+ALTER TABLE `exameetiologico`
+  ADD CONSTRAINT `exameetiologico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
+  ADD CONSTRAINT `exameetiologico_ibfk_2` FOREIGN KEY (`idAgente`) REFERENCES `agenteetiologico` (`idAgente`);
+
 ALTER TABLE `examefisico`
   ADD CONSTRAINT `exameFisico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
@@ -469,7 +464,9 @@ ALTER TABLE `histobstetrico`
   ADD CONSTRAINT `histobstetrico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
 
 ALTER TABLE `prenatal`
-  ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
+  ADD CONSTRAINT `prenatal_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `prenatal_ibfk_2` FOREIGN KEY (`ufPrenatal`) REFERENCES `estado` (`uf`),
+  ADD CONSTRAINT `prenatal_ibfk_3` FOREIGN KEY (`municipioPrenatal`) REFERENCES `municipio` (`codigo`);
 
 ALTER TABLE `prontuario`
   ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idUsuario`);
@@ -487,57 +484,6 @@ ALTER TABLE `usoalcool`
 
 ALTER TABLE `usotabaco`
   ADD CONSTRAINT `usotabaco_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
-
-CREATE TABLE `agenteetiologico` (
-  `idAgente` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Fazendo dump de dados para tabela `agenteetiologico`
---
-
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(1, 'Rubéola');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(2, 'Citomegalovírus');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(3, 'Herpes vírus');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(4, 'Parvovírus');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(5, 'Toxoplasmose');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(6, 'Sífilis');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(7, 'HIV');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(8, 'Zika vírus');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(9, 'Chikungunya');
-INSERT INTO `agenteetiologico` (`idAgente`, `nome`) VALUES(10, 'Dengue');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `exameetiologico`
---
-
-CREATE TABLE `exameetiologico` (
-  `idProntuario` int(11) NOT NULL,
-  `idAgente` int(11) NOT NULL,
-  `amostra` int(11) NOT NULL,
-  `data` date DEFAULT NULL,
-  `igm` int(11) DEFAULT NULL,
-  `igg` int(11) DEFAULT NULL,
-  `pcr` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `agenteetiologico`
-  ADD PRIMARY KEY (`idAgente`);
-
-ALTER TABLE `exameetiologico`
-  ADD PRIMARY KEY (`idProntuario`,`idAgente`,`amostra`),
-  ADD KEY `idAgente` (`idAgente`);
-
-ALTER TABLE `agenteetiologico`
-  MODIFY `idAgente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
-ALTER TABLE `exameetiologico`
-  ADD CONSTRAINT `exameetiologico_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`),
-  ADD CONSTRAINT `exameetiologico_ibfk_2` FOREIGN KEY (`idAgente`) REFERENCES `agenteetiologico` (`idAgente`);
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
