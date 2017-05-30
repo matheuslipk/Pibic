@@ -45,7 +45,7 @@ class UsuarioDao {
       $con = ConexaoDao::getConecao();
       $query = "SELECT * FROM usuario WHERE nick=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("i", $nick);
+      $stmt->bind_param("s", $nick);
       if($stmt->execute()){
          $result = $stmt->get_result();
          $array = $result->fetch_assoc();
