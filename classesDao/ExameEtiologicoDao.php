@@ -4,10 +4,10 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/ConexaoDao.php';
 class ExameEtiologicoDao {
    public function inserirExameEtiologico($array){
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameetiologico VALUES (?,?,?,?,?,?,?)";
+      $query = "INSERT INTO exameetiologico VALUES (?,?,0,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiisiii", $array['prontuario'], $array['idAgente'], 
-              0, $array['data00'], $array['igm00'],
+      $stmt->bind_param("iisiii", $array['idProntuario'], $array['idAgente'], 
+              $array['data00'], $array['igm00'],
               $array['igg00'], $array['pcr00']);
       if($stmt->execute()){
          $stmt->close();
@@ -23,11 +23,14 @@ class ExameEtiologicoDao {
    }
    
    private function inserirExameEtiologico1($array){
+      if($array['data01']===NULL){
+         return TRUE;
+      }
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameetiologico VALUES (?,?,?,?,?,?,?)";
+      $query = "INSERT INTO exameetiologico VALUES (?,?,1,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiisiii", $array['prontuario'], $array['idAgente'], 
-              1, $array['data01'], $array['igm01'],
+      $stmt->bind_param("iisiii", $array['idProntuario'], $array['idAgente'], 
+              $array['data01'], $array['igm01'],
               $array['igg01'], $array['pcr01']);
       if($stmt->execute()){
          $stmt->close();
@@ -41,12 +44,15 @@ class ExameEtiologicoDao {
    }
    
    private function inserirExameEtiologico2($array){
+      if($array['data02']===NULL){
+         return TRUE;
+      }
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO exameetiologico VALUES (?,?,?,?,?,?,?)";
+      $query = "INSERT INTO exameetiologico VALUES (?,?,2,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiisiii", $array['prontuario'], $array['idAgente'], 
-              2, $array['data02'], $array['igm02'],
-              $array['igg002'], $array['pcr02']);
+      $stmt->bind_param("iisiii", $array['idProntuario'], $array['idAgente'], 
+              $array['data02'], $array['igm02'],
+              $array['igg02'], $array['pcr02']);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
@@ -76,6 +82,23 @@ class ExameEtiologicoDao {
    }
    
    public function updateExameEtiologico($array){      
+      $con = ConexaoDao::getConecao();
+      $query = "DELETE FROM exameetiologico WHERE idProntuario=? AND idAgente=?";
+      $stmt = $con->prepare($query);
+      $stmt->bind_param("ii", $array['idProntuario'], $array['idAgente']);
+      if($stmt->execute()){
+         $stmt->close();
+         $con->close();
+         $this->inserirExameEtiologico($array);
+         return TRUE;
+      }
+      $erro = $stmt->error;
+      $stmt->close();
+      $con->close();
+      return $erro;
+   }
+   
+   public function updateExameEtiologic2($array){      
       $con = ConexaoDao::getConecao();
       $query = "UPDATE exameetiologico SET ExameEtiologico=?, freqAlcool=?, "
               . "dosesDrinks=?, freqDrinks=? WHERE idProntuario=?";

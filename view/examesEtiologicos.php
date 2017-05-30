@@ -63,7 +63,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="2" style="display: none">
@@ -103,7 +103,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="3" style="display: none">
@@ -143,7 +143,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="4" style="display: none">
@@ -183,7 +183,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="5" style="display: none">
@@ -223,7 +223,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="6" style="display: none">
@@ -263,7 +263,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="7" style="display: none">
@@ -289,7 +289,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="8" style="display: none">
@@ -329,7 +329,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
    
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="9" style="display: none">
@@ -369,7 +369,7 @@ class entrevistaMae extends Pagina{
       </table>
    </form>
             
-   <form>
+   <form method="post" action="/controll/exameEtiologico/inserirExamesEtiologicos.php">
       <table class="table table-condensed">
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <input name="idAgente" value="10" style="display: none">

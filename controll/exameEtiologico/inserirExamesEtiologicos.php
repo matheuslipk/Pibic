@@ -11,14 +11,14 @@ function inserirExameEtiologico(){
    $array['pcr00'] = $_POST['pcr00'] ? $_POST['pcr00'] : NULL;
    
    $array['data01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
-   $array['igm01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
-   $array['igg01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
-   $array['pcr01'] = $_POST['data01'] ? $_POST['data01'] : NULL;
+   $array['igm01'] = $_POST['igm01'] ? $_POST['igm01'] : NULL;
+   $array['igg01'] = $_POST['igg01'] ? $_POST['igg01'] : NULL;
+   $array['pcr01'] = $_POST['pcr01'] ? $_POST['pcr01'] : NULL;
    
    $array['data02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
-   $array['igm02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
-   $array['igg02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
-   $array['pcr02'] = $_POST['data02'] ? $_POST['data02'] : NULL;
+   $array['igm02'] = $_POST['igm02'] ? $_POST['igm02'] : NULL;
+   $array['igg02'] = $_POST['igg02'] ? $_POST['igg02'] : NULL;
+   $array['pcr02'] = $_POST['pcr02'] ? $_POST['pcr02'] : NULL;
    
    $ExameEtiologicoDao = new ExameEtiologicoDao();
    
@@ -26,13 +26,13 @@ function inserirExameEtiologico(){
       $result = $ExameEtiologicoDao->updateExameEtiologico($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/examesEtiologicos.php?prontuario={$array['idProntuario']}");
       }
    }else{
       $result = $ExameEtiologicoDao->inserirExameEtiologico($array);
       echo $result;
       if($result === TRUE){
-         header("Location: /view/habitosGestacao.php?prontuario={$array['idProntuario']}");
+         header("Location: /view/examesEtiologicos.php?prontuario={$array['idProntuario']}");
       }
    }   
 }
