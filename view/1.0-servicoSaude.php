@@ -5,7 +5,51 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ServicoSaudeDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/MunicipioDao.php';
 
 class Index extends Pagina{
-   public function exibirBody() {
+   
+   public function exibirHead() {
+      parent::exibirHead();
+      ?>
+   <script>
+   $(document).ready(function(){
+      $("#btnSubmit").on("click", function(){
+         verificarCampos();
+      });
+      
+      function verificarCampos(){
+         var campo = [];
+         campo.push($.trim($("#identServico").val()).length);
+         campo.push($.trim($("#resp").val()).length);
+         var contador=0;
+         for(i=0; i<campo.length; i++){
+            if(campo[i]===0){
+               contador++;
+            }
+         }
+         
+         var ok;
+         
+         if(contador!==0){
+            ok = confirm("Você está deixando "+contador+" campos em branco!");
+         }else{
+            $("#formServicoSaude").submit();
+            return;
+         }
+         
+         if(ok===true){
+            $("#formServicoSaude").submit();
+            return;
+         }else{
+            console.log("Você resolveu ficar");
+         }
+         
+      }
+   });
+   </script>
+
+      <?php
+   }
+
+      public function exibirBody() {
       parent::exibirBody();
       if(isset($_GET['prontuario'])){
          $prontuario = $_GET['prontuario'];
@@ -24,7 +68,7 @@ class Index extends Pagina{
                </h1>
             </div>
          </div>
-         <form method="post" action="/controll/1.0-servicoSaude/inserirServicoSaude.php">
+         <form id="formServicoSaude" method="post" action="/controll/1.0-servicoSaude/inserirServicoSaude.php">
             <div class="row">
                <h2>1 - Dados do serviço de saúde</h2>
             </div>
@@ -52,7 +96,7 @@ class Index extends Pagina{
 
                <div class="form-group col-sm-6">
                   <label>Identificação do serviço</label>
-                  <input name="identServico" type="text" class="form-control" <?php echo "value={$servico['identServico']}"; ?>>
+                  <input id="identServico" name="identServico" type="text" class="form-control" <?php echo "value={$servico['identServico']}"; ?>>
                </div>
             </div>
 
@@ -82,13 +126,13 @@ class Index extends Pagina{
 
                <div class="form-group col-sm-4">
                   <label>RESP</label>
-                  <input name="resp" type="text" class="form-control"  <?php echo "value={$servico['resp']}"; ?>>
+                  <input id="resp" name="resp" type="text" class="form-control"  <?php echo "value={$servico['resp']}"; ?>>
                </div>
             </div>
 
             <div class="row">
                <div class="col-sm-4">
-                  <button type="submit" class="btn btn-success">Salvar e ir para a próxima seção >></button>
+                  <button id="btnSubmit" type="button" class="btn btn-success">Salvar e ir para a próxima seção >></button>
                </div>
 
             </div>
