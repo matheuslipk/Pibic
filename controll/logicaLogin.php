@@ -32,5 +32,5 @@ function fazerLoginUsuario(){
 }
 
 function redirecionaParaLogin($erro){
-    header("Location: /?erro=$erro");
+    header("Location: /login.php?erro=$erro");
 }

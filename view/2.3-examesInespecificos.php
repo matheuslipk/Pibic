@@ -47,8 +47,8 @@ class recemNascido extends Pagina{
          <div class="row">
             <div class="col-xs-12 form-group">
                <label>2.3.1 - Hemograma (considerar o primeiro)</label>   
-               <label><input required name="hemograma" value="0" type="radio" id="hemogramaNao">Não</label>
-               <label><input required name="hemograma" value="1" type="radio" id="hemogramaSim">Sim</label>
+               <label><input name="hemograma" value="0" type="radio" id="hemogramaNao">Não</label>
+               <label><input name="hemograma" value="1" type="radio" id="hemogramaSim">Sim</label>
             </div>
          </div>
          
@@ -108,8 +108,8 @@ class recemNascido extends Pagina{
          <input name="prontuario" value="<?php echo $_GET['prontuario']; ?>" style="display: none">
          <div class="col-xs-12 form-group">
             <label>2.3.2 - Punção liquórica</label>
-            <label><input name="puncaoLiquorica" value="0" type="radio" id="puncaoLiquoricaNao" required>Não</label>
-            <label><input name="puncaoLiquorica" value="1" type="radio" id="puncaoLiquoricaSim" required>Sim</label>
+            <label><input name="puncaoLiquorica" value="0" type="radio" id="puncaoLiquoricaNao">Não</label>
+            <label><input name="puncaoLiquorica" value="1" type="radio" id="puncaoLiquoricaSim">Sim</label>
          </div>         
       </div>
       <div id="divFormPuncaoLiquorica">

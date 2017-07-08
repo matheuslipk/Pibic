@@ -54,7 +54,7 @@ class recemNascido extends Pagina{
          <input type="text" style="display: none;" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
          <div class="col-xs-6 form-group">
             <label>Data do parto</label>
-            <input name="dataParto" class="form-control" type="date" required value="<?php if(isset($recemNascido['dataParto'])){echo $recemNascido['dataParto'];}?>">
+            <input name="dataParto" class="form-control" type="date" value="<?php if(isset($recemNascido['dataParto'])){echo $recemNascido['dataParto'];}?>">
          </div>
          <div class="col-xs-6 form-group">
             <label>Sexo</label>
@@ -90,9 +90,9 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Gemelar</label>
-            <input <?php if($recemNascido['gemelar']===0) {echo "checked";}?> required type="radio" name="gemelar" value="0" id="gemelarNao">Não
-            <input <?php if($recemNascido['gemelar']===1) {echo "checked";}?> required type="radio" name="gemelar" value="1" id="gemelarSim">Sim
-            <select class="form-control" id="tipoGemelar" name="tipoGemelar" required>    
+            <input <?php if($recemNascido['gemelar']===0) {echo "checked";}?> type="radio" name="gemelar" value="0" id="gemelarNao">Não
+            <input <?php if($recemNascido['gemelar']===1) {echo "checked";}?> type="radio" name="gemelar" value="1" id="gemelarSim">Sim
+            <select class="form-control" id="tipoGemelar" name="tipoGemelar">    
                <?php
                if(isset($recemNascido['tipoGemelar'])){
                   $tipoGemela = $recemNascido['tipoGemelar'];
@@ -159,8 +159,8 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="form-group col-xs-6">
             <label>Ocorreu dano perinatal?</label><br>
-            <input <?php if($recemNascido['danoPerinatal']===0) {echo "checked";}?> required class="radio-inline" type="radio" name="danoPerinatal" value="0" id="danoPerinatalNao">Não
-            <input <?php if($recemNascido['danoPerinatal']===1) {echo "checked";}?> required class="radio-inline" type="radio" name="danoPerinatal" value="1" id="danoPerinatalSim">Sim, especifique
+            <input <?php if($recemNascido['danoPerinatal']===0) {echo "checked";}?> class="radio-inline" type="radio" name="danoPerinatal" value="0" id="danoPerinatalNao">Não
+            <input <?php if($recemNascido['danoPerinatal']===1) {echo "checked";}?> class="radio-inline" type="radio" name="danoPerinatal" value="1" id="danoPerinatalSim">Sim, especifique
             <select class="form-control" id="tipoDanoPerinatal" name="tipoDanoPerinatal">
                <?php
                if(isset($recemNascido['tipoDanoPerinatal'])){
@@ -309,8 +309,8 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Presença de malformações?</label>
-            <input required id="malformacaoNao" name='malformacao' type="radio" value="0">Não
-            <input required id="malformacaoSim" name='malformacao' type="radio" value="1">Sim
+            <input id="malformacaoNao" name='malformacao' type="radio" value="0">Não
+            <input id="malformacaoSim" name='malformacao' type="radio" value="1">Sim
          </div>
          <div class="col-xs-6 form-group">
             <label>Tipo de malformações</label>
@@ -333,8 +333,8 @@ class recemNascido extends Pagina{
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Houve outros achados clínicos?</label>
-            <label><input required type="radio" name="achadosClinicos" value="0">Não</label>
-            <label><input required type="radio" name="achadosClinicos" value="1">Sim</label>
+            <label><input type="radio" name="achadosClinicos" value="0">Não</label>
+            <label><input type="radio" name="achadosClinicos" value="1">Sim</label>
             
          </div>
          <div class="col-xs-6 form-group">
