@@ -481,4 +481,3 @@ ALTER TABLE `usoalcool`
 
 ALTER TABLE `usotabaco`
   ADD CONSTRAINT `usotabaco_ibfk_1` FOREIGN KEY (`idProntuario`) REFERENCES `prontuario` (`idProntuario`) ON DELETE CASCADE;
-101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
