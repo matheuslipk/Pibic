@@ -271,7 +271,7 @@ class recemNascido extends Pagina{
     if(isset($_GET['prontuario'])){
       $exameDao = new ExameFisicoDao();
       $exameFisico = $exameDao->getExameFisicoByProntuario($_GET['prontuario']);
-      var_dump($exameFisico);
+//      var_dump($exameFisico);
    }else{
       die("Nenhum prontuário selecionado");
    }
