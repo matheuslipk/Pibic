@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/RecemNascidoDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ExameFisicoDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/Pagina.php';
 
 class recemNascido extends Pagina{
@@ -266,95 +267,232 @@ class recemNascido extends Pagina{
    </form>   
    
    <h3>2.2 - Exame físico ao nascer</h3>
+   <?php
+    if(isset($_GET['prontuario'])){
+      $exameDao = new ExameFisicoDao();
+      $exameFisico = $exameDao->getExameFisicoByProntuario($_GET['prontuario']);
+      var_dump($exameFisico);
+   }else{
+      die("Nenhum prontuário selecionado");
+   }
+   
+   
+   ?>
    <form action="/controll/2.2-exameFisicoAoNascer/inserirExameFisico.php" method="post">
       <input type="text" style="display: none;" name="prontuario" value="<?php echo $_GET['prontuario']; ?>">
 
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Peso (g)</label>
-            <input name='peso' type="number" class="form-control">
+            <input name='peso' type="number" class="form-control" <?php if(isset($exameFisico['peso'])) echo "value='{$exameFisico['peso']}'"; ?>>
          </div>
          <div class="col-xs-6 form-group">
             <label>Estatura (cm)</label>
-            <input name='estatura' type="number" class="form-control">
+            <input name='estatura' type="number" class="form-control" <?php if(isset($exameFisico['estatura'])) echo "value='{$exameFisico['estatura']}'"; ?>>
          </div>
       </div>   
 
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Perímetro torácico (cm)</label>
-            <input name='perimToracico' type="number" class="form-control">
+            <input name='perimToracico' type="number" class="form-control" <?php if(isset($exameFisico['perimToracico'])) echo "value='{$exameFisico['perimToracico']}'"; ?>>
          </div>
          <div class="col-xs-6 form-group">
             <label>Perímetro cefálico (cm)</label>
-            <input name='perimCefalico' type="number" class="form-control">
+            <input name='perimCefalico' type="number" class="form-control" <?php if(isset($exameFisico['perimCefalico'])) echo "value='{$exameFisico['perimCefalico']}'"; ?>>
          </div>
       </div> 
 
       <div class="row">
          <div class="col-xs-4 form-group">
             <label>Índice de Apgar 1º min</label>
-            <input name='apgar1' type="number" class="form-control">
+            <input name='apgar1' type="number" class="form-control" <?php if(isset($exameFisico['apgar1'])) echo "value='{$exameFisico['apgar1']}'"; ?>>
          </div>
          <div class="col-xs-4 form-group">
             <label>Índice de Apgar 5º min</label>
-            <input name='apgar5' type="number" class="form-control">
+            <input name='apgar5' type="number" class="form-control" <?php if(isset($exameFisico['apgar5'])) echo "value='{$exameFisico['apgar5']}'"; ?>>
          </div>
          <div class="col-xs-4 form-group">
             <label>Índice de Apgar 10º min</label>
-            <input name='apgar10' type="number" class="form-control">
+            <input name='apgar10' type="number" class="form-control" <?php if(isset($exameFisico['apgar10'])) echo "value='{$exameFisico['apgar10']}'"; ?>>
          </div>
       </div> 
       
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Presença de malformações?</label>
-            <input id="malformacaoNao" required name='malformacao' type="radio" value="0">Não
-            <input id="malformacaoSim" required name='malformacao' type="radio" value="1">Sim
+            <input id="malformacaoNao" required name='malformacao' type="radio" value="0" <?php if(isset($exameFisico['malformacao']) && $exameFisico['malformacao']===0) echo " checked "; ?>>Não
+            <input id="malformacaoSim" required name='malformacao' type="radio" value="1" <?php if(isset($exameFisico['malformacao']) && $exameFisico['malformacao']===1) echo " checked "; ?>>Sim
          </div>
          <div class="col-xs-6 form-group">
             <label>Tipo de malformações</label>
             <select id="tipoMalformacao" class="form-control" name="tipoMalformacao">
-               <option>Aparelho circulatório</option>
-               <option>Aparelho respiratório</option>
-               <option>Aparelho digestivo</option>
-               <option>Aparelho genitais</option>
-               <option>Aparelho osteomuscular</option>
+               <?php 
+               if(!isset($exameFisico['tipoMalformacao'])){
+                  ?>
+                  <option>Aparelho circulatório</option>
+                  <option>Aparelho respiratório</option>
+                  <option>Aparelho digestivo</option>
+                  <option>Aparelho genitais</option>
+                  <option>Aparelho osteomuscular</option>
+                  <?php
+               }else{
+                  if($exameFisico['tipoMalformacao']==="Aparelho circulatório"){
+                     echo "<option selected>Aparelho circulatório</option>";
+                  }else{
+                     echo "<option>Aparelho circulatório</option>";
+                  }
+                  
+                  if($exameFisico['tipoMalformacao']==="Aparelho respiratório"){
+                     echo "<option selected>Aparelho respiratório</option>";
+                  }else{
+                     echo "<option>Aparelho respiratório</option>";
+                  }
+                  
+                  if($exameFisico['tipoMalformacao']==="Aparelho digestivo"){
+                     echo "<option selected>Aparelho digestivo</option>";
+                  }else{
+                     echo "<option>Aparelho digestivo</option>";
+                  }
+                  
+                  if($exameFisico['tipoMalformacao']==="Aparelho genitais"){
+                     echo "<option selected>Aparelho genitais</option>";
+                  }else{
+                     echo "<option>Aparelho genitais</option>";
+                  }
+                  
+                  if($exameFisico['tipoMalformacao']==="Aparelho osteomuscular"){
+                     echo "<option selected>Aparelho osteomuscular</option>";
+                  }else{
+                     echo "<option>Aparelho osteomuscular</option>";
+                  }
+                  
+                  
+                  
+                  
+                  
+               }
+               
+               ?>
+               
             </select>
          </div>         
       </div> 
       
       <div class="row">
          <div class="col-xs-12 form-group"> 
-            <input id="descMalformacao" name="descMalformacao" type="text" class="form-control" placeholder="Descreva a malformação encontrada">
+            <input id="descMalformacao" name="descMalformacao" type="text" class="form-control" placeholder="Descreva a malformação encontrada"
+                   <?php if(isset($exameFisico['malformacao'])) echo "value='{$exameFisico['descMalformacao']}'"; ?> >
          </div>         
       </div>
       
       <div class="row">
          <div class="col-xs-6 form-group">
             <label>Houve outros achados clínicos?</label>
-            <label><input type="radio" required name="achadosClinicos" value="0">Não</label>
-            <label><input type="radio" required name="achadosClinicos" value="1">Sim</label>
+            <label><input type="radio" required name="achadosClinicos" value="0" <?php if(isset($exameFisico['malformacao']) && $exameFisico['malformacao']===0) echo " checked "; ?>>Não</label>
+            <label><input type="radio" required name="achadosClinicos" value="1" <?php if(isset($exameFisico['malformacao']) && $exameFisico['malformacao']===1) echo " checked "; ?>>Sim</label>
             
          </div>
          <div class="col-xs-6 form-group">
             <label>Outros achados clínicos</label>
             <select class="form-control" name="outrosAchadosClinicos">
-               <option></option>
-               <option>Icterícia</option>
-               <option>Anemia</option>
-               <option>Esplenomegalia</option>
-               <option>Alterações ósseas</option>
-               <option>Choro ao manuseio</option>
-               <option>Hidropsia</option>
-               <option>Rinite muco-sanguinolenta</option>
-               <option>Hepatomegalia</option>
-               <option>Lesões cutâneas</option>
-               <option>Pseudoparalisia</option>
-               <option>Petéquias</option>
-               <option>Plaquetopenia</option>
-               <option>Convulsões</option>
-               <option>Outras</option>
+               <?php
+               if(!isset($exameFisico['outrosAchadosClinicos'])){
+                  ?>
+                  <option></option>
+                  <option>Icterícia</option>
+                  <option>Anemia</option>
+                  <option>Esplenomegalia</option>
+                  <option>Alterações ósseas</option>
+                  <option>Choro ao manuseio</option>
+                  <option>Hidropsia</option>
+                  <option>Rinite muco-sanguinolenta</option>
+                  <option>Hepatomegalia</option>
+                  <option>Lesões cutâneas</option>
+                  <option>Pseudoparalisia</option>
+                  <option>Petéquias</option>
+                  <option>Plaquetopenia</option>
+                  <option>Convulsões</option>
+                  <option>Outras</option>               
+                  <?php
+               }else{
+                  if($exameFisico['outrosAchadosClinicos']===''){
+                     echo '<option selected></option>';
+                  }else{
+                     echo '<option></option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Icterícia'){
+                     echo '<option selected>Icterícia</option>';
+                  }else{
+                     echo '<option>Icterícia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Anemia'){
+                     echo '<option selected>Anemia</option>';
+                  }else{
+                     echo '<option>Anemia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Esplenomegalia'){
+                     echo '<option selected>Esplenomegalia</option>';
+                  }else{
+                     echo '<option>Esplenomegalia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Alterações ósseas'){
+                     echo '<option selected>Alterações ósseas</option>';
+                  }else{
+                     echo '<option>Alterações ósseas</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Choro ao manuseio'){
+                     echo '<option selected>Choro ao manuseio</option>';
+                  }else{
+                     echo '<option>Choro ao manuseio</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Hidropsia'){
+                     echo '<option selected>Hidropsia</option>';
+                  }else{
+                     echo '<option>Hidropsia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Rinite muco-sanguinolenta'){
+                     echo '<option selected>Rinite muco-sanguinolenta</option>';
+                  }else{
+                     echo '<option>Rinite muco-sanguinolenta</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Hepatomegalia'){
+                     echo '<option selected>Hepatomegalia</option>';
+                  }else{
+                     echo '<option>Hepatomegalia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Lesões cutâneas'){
+                     echo '<option selected>Lesões cutâneas</option>';
+                  }else{
+                     echo '<option>Lesões cutâneas</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Pseudoparalisia'){
+                     echo '<option selected>Pseudoparalisia</option>';
+                  }else{
+                     echo '<option>Pseudoparalisia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Petéquias'){
+                     echo '<option selected>Petéquias</option>';
+                  }else{
+                     echo '<option>Petéquias</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Plaquetopenia'){
+                     echo '<option selected>Plaquetopenia</option>';
+                  }else{
+                     echo '<option>Plaquetopenia</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Convulsões'){
+                     echo '<option selected>Convulsões</option>';
+                  }else{
+                     echo '<option>Convulsões</option>';
+                  }
+                  if($exameFisico['outrosAchadosClinicos']==='Outras'){
+                     echo '<option selected>Outras</option>';
+                  }else{
+                     echo '<option>Outras</option>';
+                  }
+               }
+               ?>
             </select>
          </div>
       </div>
